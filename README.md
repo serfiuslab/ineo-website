@@ -7,7 +7,7 @@ Prototype of the bilingual portal for the **Instituto Nacional de Eletrônica Or
 - **White-first visual identity:** generous white space, dark blue hierarchy, and blue/green accents matching the official INEO logo.
 - **Science starts on the homepage:** three interactive scientific explanations, with a motion control and support for reduced-motion preferences.
 - **Bilingual by design:** Portuguese and English share the same content structure and URL. The chosen language is saved locally.
-- **Institutional continuity:** historical INEO research areas, seven geographic hubs, events, training, and an external link to the earlier archive.
+- **Renewed research programme:** four strategic application areas (energy, health, agriculture and sustainable electronics), cross-cutting modelling/AI, seven geographic hubs and an external link to the earlier archive.
 - **Verified scholarly records:** an empty, ready-to-use catalogue accepts manually validated publications. We do not infer funding or network membership from a DOI alone.
 - **Easy team maintenance:** no frameworks, package installation, external backend or build step required for local development.
 
@@ -29,7 +29,7 @@ On GitHub, open **Settings → Pages → Build and deployment → Source → Git
 
 GitHub Pages availability for private repositories depends on the GitHub plan and repository settings. Keep the repository private during development if desired, and verify eligibility before enabling public publication.
 
-When deployed from `serfiuslab/ineo-website`, the expected project URL is `https://serfiuslab.github.io/ineo-website/` (provided Pages is enabled and deployment succeeds).
+The public project URL is <https://serfiuslab.github.io/ineo-website/>. Deployment is verified through the GitHub Actions workflow.
 
 ## Add publications
 
@@ -63,7 +63,7 @@ All user-facing interface copy lives in `translations.pt` and `translations.en` 
 
 ## Content status
 
-This is a working **development prototype**, not a verified replacement of the INEO institutional record. The three research areas and seven hubs come from the prior institutional website; the current composition of the steering committee and the network has not yet been validated. Historical links are retained during migration.
+This is a working **development prototype**, not a verified replacement of the INEO institutional record. Filipe provided the approved renewal proposal under the 2024 INCT call. Its four strategic research application areas and seven hubs inform the current descriptions. The submission's detailed personal and financial contents remain private and are not committed here. Leadership, current researcher rosters, participating-institution totals, award details and publication attribution still require editorial confirmation. Prior research-group output is not counted as newly funded INEO publications. Historical links are retained during migration.
 
 Original INEO website: <https://sites.google.com/unesp.br/ineo2020/in%C3%ADcio>
 

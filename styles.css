@@ -138,8 +138,8 @@ p { line-height: 1.75; }
 .quicklink-circle { width: 29px; height: 29px; border: 1px solid #d9e5ed; border-radius: 100%; display: grid; place-items: center; color: var(--blue); font-size: 18px; font-weight: 300; }
 
 .research-section { background: #f7fafc; border-block: 1px solid #edf2f6; }
-.research-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 19px; }
-.research-card { min-height: 390px; background: #fff; border: 1px solid #e4edf3; border-radius: 18px; padding: 35px 31px; display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s, border-color .25s; }
+.research-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 19px; }
+.research-card { min-height: 330px; background: #fff; border: 1px solid #e4edf3; border-radius: 18px; padding: 35px 31px; display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s, border-color .25s; }
 .research-card:hover { transform: translateY(-7px); box-shadow: var(--shadow); border-color: #c1dbed; }
 .research-icon { width: 60px; height: 60px; border-radius: 16px; position: relative; background: #eef7fd; color: var(--blue); margin-bottom: 24px; }
 .research-icon span { position: absolute; border: 2px solid currentColor; }
@@ -155,11 +155,16 @@ p { line-height: 1.75; }
 .icon-model span:nth-child(1) { left: 13px; top: 23px; }
 .icon-model span:nth-child(2) { left: 34px; top: 13px; border-color: var(--green); }
 .icon-model span:nth-child(3) { left: 34px; top: 35px; }
+.icon-sustain span { width: 27px; height: 13px; border-radius: 16px 4px 16px 4px; transform: rotate(-35deg); }
+.icon-sustain span:nth-child(1) { left: 11px; top: 12px; border-color: var(--green); }
+.icon-sustain span:nth-child(2) { left: 24px; top: 26px; }
+.icon-sustain span:nth-child(3) { left: 10px; top: 40px; border-color: var(--green); }
 .card-index { font-size: 10px; letter-spacing: .17em; font-weight: 800; color: #8da6b7; margin-bottom: 12px; }
 .research-card h3 { font-size: 21px; line-height: 1.33; letter-spacing: -.035em; margin-bottom: 14px; }
 .research-card > p:not(.card-index) { font-size: 14px; line-height: 1.75; color: var(--muted); }
 .topic-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 18px; }
 .topic-tags span { border: 1px solid #e0ebf1; color: #60839d; border-radius: 20px; padding: 6px 9px; font-size: 10px; font-weight: 800; }
+.research-crosscutting { margin: 23px 0 0; padding: 16px 20px; background: #fff; border-left: 3px solid var(--green); border-radius: 0 12px 12px 0; color: #536f82; font-size: 15px; line-height: 1.75; }
 .research-source { font-size: 11px; color: #93a4b1; margin: 19px 0 0; }
 .research-source a { color: var(--blue); text-decoration: underline; }
 
