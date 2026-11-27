@@ -74,6 +74,8 @@ Potential future sources for candidate records: OpenAlex, ORCID and Crossref. Th
 
 All user-facing interface copy lives in `translations.pt` and `translations.en` in `app.js`. Add the same key to both languages when extending the site. Proper names and DOI metadata are not translated.
 
+Script URLs in the four HTML entrypoints have a version query string. Change the version when releasing JavaScript changes to GitHub Pages, so browsers do not reuse an older cached translation or gallery script.
+
 Long-form historical narratives are stored in matching `pt` and `en` sections inside `history.js`. Gallery archival captions likewise have PT/EN entries in `gallery.js`. Run the validation script to check page links, dictionary parity, historical sections and the five locally bundled gallery photos.
 
 ## Content status
