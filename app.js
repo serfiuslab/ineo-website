@@ -1,5 +1,5 @@
 /* INEO — bilingual, buildless scientific portal prototype.
- * Add validated records to content/publications.json; the UI renders them here.
+ * The UI distinguishes curated records from automated OpenAlex researcher output.
  */
 
 const translations = {
@@ -49,14 +49,17 @@ const translations = {
     networkFullList: 'Consultar lista de pesquisadores', networkSelectLabel: 'POLOS DA REDE', networkDetailKicker: 'POLO SELECIONADO',
     networkDetailDesc: 'O polo integra o modelo de articulação proposto para o novo INEO. A composição atualizada de pesquisadores e coordenações será publicada após verificação institucional.',
     publicationsKicker: 'CONHECIMENTO COMPARTILHADO', publicationsTitle: 'A produção científica <em>em um só lugar.</em>',
-    publicationsLead: 'Estamos preparando um catálogo curado das publicações da rede, com busca por título, autoria, tema e DOI, além de filtros por ano e área.',
-    catalogTitle: 'Biblioteca de publicações', catalogStatus: 'EM IMPLANTAÇÃO',
+    publicationsLead: 'Explore os artigos e revisões dos pesquisadores selecionados, recuperados pelo OpenAlex e organizados por ano. A atribuição de cada trabalho ao INEO requer validação.',
+    catalogTitle: 'Publicações dos pesquisadores', catalogStatus: 'ATUALIZAÇÃO AUTOMÁTICA',
     catalogSearchLabel: 'Buscar publicações', catalogPlaceholder: 'Buscar título, autor ou DOI...',
-    filterYear: 'Filtrar por ano', filterTopic: 'Filtrar por tema', catalogAllYears: 'Todos os anos', catalogAllTopics: 'Todos os temas',
-    catalogEmptyTitle: 'O catálogo está sendo preparado', catalogEmptyDesc: 'As publicações serão exibidas aqui após verificação dos registros pela equipe.',
+    filterYear: 'Filtrar por ano', filterResearcher: 'Filtrar por pesquisador', catalogAllYears: 'Todos os anos', catalogAllResearchers: 'Todos os pesquisadores',
+    catalogEmptyTitle: 'Aguardando a primeira coleta do OpenAlex', catalogEmptyDesc: 'O catálogo será preenchido automaticamente pelo fluxo de publicação do GitHub Pages.',
     catalogNoMatchTitle: 'Nenhuma publicação encontrada', catalogNoMatchDesc: 'Experimente outros termos ou remova os filtros.',
-    catalogMethod: 'A inclusão de um artigo dependerá de verificação de vínculo com a rede. Metadados automáticos não equivalem a comprovação de financiamento pelo INEO.',
-    catalogArchive: 'Acessar publicações do acervo anterior', catalogRead: 'Ver publicação',
+    catalogMethod: 'Esta é uma coleção automatizada de artigos e revisões dos pesquisadores consultados. A presença de um trabalho não comprova sua vinculação ou financiamento pelo INEO. Metadados e atribuição institucional estão sujeitos a conferência.',
+    catalogArchive: 'Acessar publicações do acervo anterior', catalogRead: 'Ver publicação', catalogViewOpenAlex: 'Ver no OpenAlex',
+    catalogCount: '{shown} de {total} publicações encontradas', catalogUpdated: 'Atualizado em {date} · OpenAlex', catalogPartial: 'Alguns perfis necessitam de conferência',
+    catalogMore: 'Carregar mais publicações', catalogAutoBadge: 'METADADOS OPENALEX', catalogCuratedBadge: 'REGISTRO VALIDADO',
+    catalogMatched: 'Pesquisadores consultados:', catalogOpenAccess: 'Acesso aberto', catalogYearCount: '{count} publicações',
     activitiesKicker: 'A REDE EM MOVIMENTO', activitiesTitle: 'Encontros, formação <em>e troca de ideias.</em>',
     activitiesLead: 'O novo plano prevê workshops anuais, intercâmbio entre laboratórios, ações em escolas e conteúdos digitais para aproximar ciência, estudantes e sociedade.',
     activityTagEvents: 'EVENTOS DA REDE', activity1Title: 'Workshops e encontros científicos', activity1Desc: 'A proposta prevê encontros anuais de integração. Consulte também os registros de workshops da rede anterior.',
@@ -144,14 +147,17 @@ const translations = {
     networkFullList: 'Browse the researcher directory', networkSelectLabel: 'RESEARCH HUBS', networkDetailKicker: 'SELECTED HUB',
     networkDetailDesc: 'This hub is part of the proposed network structure. Updated researcher and leadership rosters will be published after institutional verification.',
     publicationsKicker: 'KNOWLEDGE SHARED', publicationsTitle: 'Scientific output <em>in one place.</em>',
-    publicationsLead: 'We are preparing a curated catalogue of network publications, searchable by title, authorship, topic and DOI, with filters for year and research area.',
-    catalogTitle: 'Publication library', catalogStatus: 'IN DEVELOPMENT',
+    publicationsLead: 'Explore articles and reviews by the selected researchers, retrieved from OpenAlex and grouped by year. Attribution of any work to INEO requires verification.',
+    catalogTitle: 'Researcher publications', catalogStatus: 'AUTOMATIC UPDATES',
     catalogSearchLabel: 'Search publications', catalogPlaceholder: 'Search title, author or DOI...',
-    filterYear: 'Filter by year', filterTopic: 'Filter by topic', catalogAllYears: 'All years', catalogAllTopics: 'All topics',
-    catalogEmptyTitle: 'The catalogue is being prepared', catalogEmptyDesc: 'Publications will appear here after records are verified by the team.',
+    filterYear: 'Filter by year', filterResearcher: 'Filter by researcher', catalogAllYears: 'All years', catalogAllResearchers: 'All researchers',
+    catalogEmptyTitle: 'Waiting for the first OpenAlex sync', catalogEmptyDesc: 'The GitHub Pages publication workflow will populate the catalogue automatically.',
     catalogNoMatchTitle: 'No publications found', catalogNoMatchDesc: 'Try different terms or clear the filters.',
-    catalogMethod: 'Each paper must be checked for an actual connection with the network. Automatically retrieved metadata do not establish INEO funding.',
-    catalogArchive: 'Browse the previous publication archive', catalogRead: 'View publication',
+    catalogMethod: 'This is an automated collection of articles and reviews by the queried researchers. A work’s presence does not establish an INEO project connection or funding. Bibliographic metadata and institutional attribution remain subject to review.',
+    catalogArchive: 'Browse the previous publication archive', catalogRead: 'View publication', catalogViewOpenAlex: 'View on OpenAlex',
+    catalogCount: '{shown} of {total} publications found', catalogUpdated: 'Updated {date} · OpenAlex', catalogPartial: 'Some researcher profiles need review',
+    catalogMore: 'Load more publications', catalogAutoBadge: 'OPENALEX METADATA', catalogCuratedBadge: 'VERIFIED RECORD',
+    catalogMatched: 'Researchers queried:', catalogOpenAccess: 'Open access', catalogYearCount: '{count} publications',
     activitiesKicker: 'THE NETWORK IN MOTION', activitiesTitle: 'Meetings, learning <em>and exchanging ideas.</em>',
     activitiesLead: 'The new plan includes annual workshops, exchanges between laboratories, school outreach and digital content to connect researchers, students and society.',
     activityTagEvents: 'NETWORK EVENTS', activity1Title: 'Scientific workshops and meetings', activity1Desc: 'The proposal includes annual network meetings. Records from earlier INEO workshops remain available.',
@@ -211,7 +217,11 @@ const state = {
   stage: 'structure',
   region: 0,
   paused: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-  publications: []
+  publications: [],
+  researchers: [],
+  syncGeneratedAt: null,
+  syncUnresolved: [],
+  shownPublications: 16
 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -300,30 +310,43 @@ function normalize(text) {
 
 function renderPublicationOptions() {
   const years = [...new Set(state.publications.map(item => Number(item.year)).filter(Number.isFinite))].sort((a, b) => b - a);
-  const topics = [...new Set(state.publications.map(item => item.topic).filter(Boolean))].sort();
   const yearSelect = $('#publication-year');
-  const topicSelect = $('#publication-topic');
+  const researcherSelect = $('#publication-researcher');
   const previousYear = yearSelect.value;
-  const previousTopic = topicSelect.value;
+  const previousResearcher = researcherSelect.value;
   yearSelect.replaceChildren(new Option(t('catalogAllYears'), 'all'));
-  topicSelect.replaceChildren(new Option(t('catalogAllTopics'), 'all'));
+  researcherSelect.replaceChildren(new Option(t('catalogAllResearchers'), 'all'));
   years.forEach(year => yearSelect.add(new Option(String(year), String(year))));
-  topics.forEach(topic => topicSelect.add(new Option(topic, topic)));
+  state.researchers.forEach(person => researcherSelect.add(new Option(`${person.name} · ${person.institution}`, person.orcid)));
   yearSelect.value = years.some(year => String(year) === previousYear) ? previousYear : 'all';
-  topicSelect.value = topics.includes(previousTopic) ? previousTopic : 'all';
+  researcherSelect.value = state.researchers.some(person => person.orcid === previousResearcher) ? previousResearcher : 'all';
 }
 
 function renderPublications() {
   renderPublicationOptions();
   const query = normalize($('#publication-search').value.trim());
   const year = $('#publication-year').value;
-  const topic = $('#publication-topic').value;
+  const researcher = $('#publication-researcher').value;
+  const peopleByOrcid = new Map(state.researchers.map(person => [person.orcid, person.name]));
   const records = state.publications.filter(item => {
-    const matchText = normalize([item.title, ...(item.authors ?? []), item.doi, item.topic].join(' ')).includes(query);
-    return matchText && (year === 'all' || String(item.year) === year) && (topic === 'all' || item.topic === topic);
+    const selected = (item.matchedResearchers ?? []).map(orcid => peopleByOrcid.get(orcid) ?? '').join(' ');
+    const matchText = normalize([item.title, ...(item.authors ?? []), item.doi, item.topic, selected].join(' ')).includes(query);
+    return matchText && (year === 'all' || String(item.year) === year)
+      && (researcher === 'all' || (item.matchedResearchers ?? []).includes(researcher));
   });
+  records.sort((a, b) => Number(b.year) - Number(a.year) || String(b.date ?? '').localeCompare(String(a.date ?? '')) || a.title.localeCompare(b.title));
   const container = $('#publication-results');
   container.replaceChildren();
+  const format = (key, fields) => t(key).replace(/\{(\w+)\}/g, (_, name) => String(fields[name] ?? ''));
+  const count = $('#publication-status');
+  const date = state.syncGeneratedAt ? new Date(state.syncGeneratedAt) : null;
+  const dateLabel = date && Number.isFinite(date.getTime())
+    ? format('catalogUpdated', { date: date.toLocaleDateString(state.lang === 'pt' ? 'pt-BR' : 'en-US') }) : '';
+  count.textContent = [format('catalogCount', { shown: Math.min(records.length, state.shownPublications), total: records.length }), dateLabel,
+    state.syncUnresolved.length ? t('catalogPartial') : ''].filter(Boolean).join(' · ');
+  const more = $('#publication-load-more');
+  more.hidden = records.length <= state.shownPublications;
+  more.parentElement.hidden = more.hidden;
   if (!records.length) {
     const empty = document.createElement('div');
     empty.className = 'publication-empty';
@@ -339,18 +362,53 @@ function renderPublications() {
     container.appendChild(empty);
     return;
   }
-  records.sort((a, b) => Number(b.year) - Number(a.year));
-  records.forEach(item => {
+  const countsByYear = new Map();
+  records.forEach(item => countsByYear.set(item.year, (countsByYear.get(item.year) ?? 0) + 1));
+  const visible = records.slice(0, state.shownPublications);
+  const years = new Map();
+  visible.forEach(item => {
+    if (!years.has(item.year)) years.set(item.year, []);
+    years.get(item.year).push(item);
+  });
+  for (const [publicationYear, group] of years) {
+    const section = document.createElement('section');
+    section.className = 'publication-year-group';
+    section.setAttribute('aria-label', String(publicationYear));
+    const heading = document.createElement('h3');
+    heading.className = 'publication-year-heading';
+    heading.append(document.createTextNode(String(publicationYear)));
+    const total = document.createElement('span');
+    total.textContent = format('catalogYearCount', { count: countsByYear.get(publicationYear) });
+    heading.append(total);
+    section.append(heading);
+    for (const item of group) {
     const article = document.createElement('article');
     article.className = 'publication-item';
     const meta = document.createElement('p');
     meta.className = 'publication-meta';
-    meta.textContent = [item.year, item.topic, item.journal].filter(Boolean).join(' · ');
-    const title = document.createElement('h3');
+    meta.textContent = [item.journal, item.topic].filter(Boolean).join(' · ');
+    const title = document.createElement('h4');
     title.textContent = item.title;
     const authors = document.createElement('p');
-    authors.textContent = (item.authors ?? []).join(', ');
-    article.append(meta, title, authors);
+    const names = item.authors ?? [];
+    authors.textContent = names.slice(0, 7).join(', ') + (names.length > 7 ? ' et al.' : '');
+    const badge = document.createElement('span');
+    badge.className = 'publication-source-badge';
+    badge.textContent = t(item.verified === true ? 'catalogCuratedBadge' : 'catalogAutoBadge');
+    article.append(meta, title, authors, badge);
+    if (item.openAccess) {
+      const access = document.createElement('span');
+      access.className = 'publication-access-badge';
+      access.textContent = t('catalogOpenAccess');
+      article.append(access);
+    }
+    const matched = (item.matchedResearchers ?? []).map(orcid => peopleByOrcid.get(orcid)).filter(Boolean);
+    if (matched.length) {
+      const related = document.createElement('p');
+      related.className = 'publication-matched';
+      related.textContent = `${t('catalogMatched')} ${matched.join(', ')}`;
+      article.append(related);
+    }
     if (typeof item.doi === 'string' && /^10\.\d{4,9}\/.+/.test(item.doi)) {
       const link = document.createElement('a');
       link.href = `https://doi.org/${encodeURI(item.doi)}`;
@@ -358,24 +416,40 @@ function renderPublications() {
       link.rel = 'noopener noreferrer';
       link.textContent = t('catalogRead');
       article.appendChild(link);
+    } else if (/^https:\/\/openalex\.org\/W\d+$/.test(item.openalexId ?? '')) {
+      const link = document.createElement('a');
+      link.href = item.openalexId;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = t('catalogViewOpenAlex');
+      article.appendChild(link);
     }
-    container.appendChild(article);
-  });
+    section.append(article);
+    }
+    container.append(section);
+  }
 }
 
 async function loadPublications() {
-  try {
-    const response = await fetch('content/publications.json', { cache: 'no-cache' });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
-    if (!Array.isArray(data.publications)) throw new Error('Invalid publication schema');
-    state.publications = data.publications.filter(item =>
-      item.verified === true && typeof item.title === 'string' && Number.isFinite(Number(item.year))
-    );
-  } catch (error) {
-    console.warn('Publication catalogue unavailable:', error);
-    state.publications = [];
-  }
+  const readJson = async file => {
+    const response = await fetch(file, { cache: 'no-cache' });
+    if (!response.ok) throw new Error(`HTTP ${response.status} ${file}`);
+    return response.json();
+  };
+  const [curatedResult, openalexResult] = await Promise.allSettled([
+    readJson('content/publications.json'), readJson('content/openalex.json')
+  ]);
+  const curated = curatedResult.status === 'fulfilled' && Array.isArray(curatedResult.value.publications)
+    ? curatedResult.value.publications.filter(item => item.verified === true && typeof item.title === 'string' && Number.isFinite(Number(item.year))) : [];
+  const openalex = openalexResult.status === 'fulfilled' ? openalexResult.value : {};
+  const candidates = Array.isArray(openalex.publications)
+    ? openalex.publications.filter(item => item.source === 'openalex' && item.verified === false && typeof item.title === 'string' && Number.isFinite(Number(item.year))) : [];
+  if (openalexResult.status === 'rejected') console.warn('OpenAlex catalogue unavailable:', openalexResult.reason);
+  state.researchers = Array.isArray(openalex.researchers) ? openalex.researchers : [];
+  state.syncGeneratedAt = openalex.generatedAt ?? null;
+  state.syncUnresolved = Array.isArray(openalex.unresolved) ? openalex.unresolved : [];
+  const curatedKeys = new Set(curated.map(item => item.doi ? `doi:${item.doi.toLowerCase()}` : `openalex:${item.openalexId}`));
+  state.publications = [...curated, ...candidates.filter(item => !curatedKeys.has(item.doi ? `doi:${item.doi.toLowerCase()}` : `openalex:${item.openalexId}`))];
   renderPublications();
 }
 
@@ -435,9 +509,14 @@ function initInteractions() {
     });
   });
   if ($('#motion-toggle')) $('#motion-toggle').addEventListener('click', () => { state.paused = !state.paused; updateMotionLabel(); });
-  if ($('#publication-search')) $('#publication-search').addEventListener('input', renderPublications);
-  if ($('#publication-year')) $('#publication-year').addEventListener('change', renderPublications);
-  if ($('#publication-topic')) $('#publication-topic').addEventListener('change', renderPublications);
+  const resetPublicationPage = () => { state.shownPublications = 16; renderPublications(); };
+  if ($('#publication-search')) $('#publication-search').addEventListener('input', resetPublicationPage);
+  if ($('#publication-year')) $('#publication-year').addEventListener('change', resetPublicationPage);
+  if ($('#publication-researcher')) $('#publication-researcher').addEventListener('change', resetPublicationPage);
+  if ($('#publication-load-more')) $('#publication-load-more').addEventListener('click', () => {
+    state.shownPublications += 16;
+    renderPublications();
+  });
   document.querySelectorAll('.discovery-step').forEach((link, index) => {
     link.addEventListener('click', () => updateStage(stages[index]));
   });

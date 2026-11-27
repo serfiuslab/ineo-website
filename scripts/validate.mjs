@@ -13,6 +13,8 @@ const subpageCss = fs.readFileSync(path.join(root, 'subpages.css'), 'utf8');
 const historyJs = fs.readFileSync(path.join(root, 'history.js'), 'utf8');
 const galleryJs = fs.readFileSync(path.join(root, 'gallery.js'), 'utf8');
 const publications = JSON.parse(fs.readFileSync(path.join(root, 'content/publications.json'), 'utf8'));
+const researchers = JSON.parse(fs.readFileSync(path.join(root, 'content/researchers.json'), 'utf8'));
+const openalex = JSON.parse(fs.readFileSync(path.join(root, 'content/openalex.json'), 'utf8'));
 
 for (const [filename, source] of Object.entries(htmlSources)) {
   assert.ok(source.startsWith('<!doctype html>'), `Missing HTML doctype in ${filename}`);
@@ -29,6 +31,13 @@ assert.ok(css.includes('@media (prefers-reduced-motion: reduce)'), 'Reduced-moti
 assert.ok(subpageCss.includes('@media (prefers-reduced-motion: reduce)'), 'Reduced-motion styles missing for editorial pages');
 assert.ok(fs.existsSync(path.join(root, 'assets/ineo-logo.png')), 'Official logo is missing');
 assert.ok(Array.isArray(publications.publications), 'Invalid publications file');
+assert.equal(researchers.schemaVersion, 1, 'Unknown researcher registry version');
+assert.equal(researchers.researchers.length, 16, 'Expected 16 initial ORCID search profiles');
+assert.equal(new Set(researchers.researchers.map(person => person.orcid)).size, 16, 'Repeated researcher ORCIDs');
+assert.equal(openalex.schemaVersion, 1, 'Unknown OpenAlex cache schema version');
+assert.ok(Array.isArray(openalex.publications), 'OpenAlex cache must contain a publications array');
+assert.ok(html.includes('id="publication-researcher"'), 'Researcher filter is missing');
+assert.ok(html.includes('id="publication-load-more"'), 'Publication pagination is missing');
 
 const match = js.match(/const translations = ([\s\S]+?);\s+const stages =/);
 assert.ok(match, 'Cannot locate translations');
@@ -69,4 +78,4 @@ for (const item of publications.publications) {
   assert.ok(Number.isInteger(item.year), 'Every publication needs an integer year');
 }
 
-console.log(`INEO validation passed: ${htmlFiles.length} pages, ${pt.length} bilingual strings, ${ids.size} homepage IDs, ${galleryPhotos.length} archival photographs, ${publications.publications.length} publication records.`);
+console.log(`INEO validation passed: ${htmlFiles.length} pages, ${pt.length} bilingual strings, ${ids.size} homepage IDs, ${galleryPhotos.length} archival photographs, ${researchers.researchers.length} researcher ORCIDs, ${publications.publications.length} curated records.`);

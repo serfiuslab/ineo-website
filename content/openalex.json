@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAlex",
+  "generatedAt": null,
+  "selection": "Journal articles and reviews by the specified ORCID search cohort; INEO project attribution not verified.",
+  "researchers": [],
+  "unresolved": [],
+  "publications": []
+}

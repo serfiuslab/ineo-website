@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "description": "Initial ORCID search cohort supplied by Filipe; not a complete or formally validated INEO membership roster.",
+  "researchers": [
+    { "name": "Ángel Alberto Hidalgo", "institution": "UFPI", "orcid": "0000-0002-5905-229X" },
+    { "name": "Edson Laureto", "institution": "UEL", "orcid": "0000-0002-5526-3997" },
+    { "name": "Eduard Westphal", "institution": "UFSC", "orcid": "0000-0002-5711-5365" },
+    { "name": "Filipe Camargo Dalmatti Alves Lima", "institution": "IFSP", "orcid": "0000-0001-7062-5450" },
+    { "name": "Ivan Helmuth Bechtold", "institution": "UFSC", "orcid": "0000-0001-6393-7245" },
+    { "name": "Karen Wohnrath", "institution": "UEPG", "orcid": "0000-0002-3606-9275" },
+    { "name": "Laura Oliveira Péres", "institution": "UNIFESP", "orcid": "0000-0003-2513-0592" },
+    { "name": "Lucas Fugikawa-Santos", "institution": "UNESP", "orcid": "0000-0001-7376-2717" },
+    { "name": "Marco Cremona", "institution": "PUC-Rio", "orcid": "0000-0003-1306-4639" },
+    { "name": "Marília Junqueira Caldas", "institution": "USP", "orcid": "0000-0001-9191-9642" },
+    { "name": "Marystela Ferreira", "institution": "UFSCar", "orcid": "0000-0002-9459-8167" },
+    { "name": "Melissa Fabíola Siqueira", "institution": "UFOP", "orcid": "0000-0002-0277-0418" },
+    { "name": "Osvaldo Novais de Oliveira Júnior", "institution": "USP", "orcid": "0000-0002-5399-5860" },
+    { "name": "Priscila Alessio Constantino", "institution": "UNESP", "orcid": "0000-0002-1345-0540" },
+    { "name": "Roberto Mendonça Faria", "institution": "USP", "orcid": "0000-0002-0088-442X" },
+    { "name": "Roselena Faez", "institution": "UFSCar", "orcid": "0000-0003-1263-7837" }
+  ]
+}

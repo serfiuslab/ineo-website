@@ -68,13 +68,15 @@ The current home-page prototype has three stages: **structure, charge and device
 
 Later chapters may expand to conjugation and electronic levels; morphology and charge transport; OLED, organic photovoltaic and OFET operation; biosensors; and sustainability across the material life cycle. Keep teaching interactive, concise and scientifically qualified. KonoLab's educational design patterns are a useful inspiration, but the INEO site must have its own independent institutional identity.
 
-## Publication aggregation: planned, not implemented
+## Publication aggregation: OpenAlex automation (November 27, 2026)
 
-The objective is a living, searchable catalogue for scientific works associated with the INEO network. OpenAlex, ORCID and Crossref can supply **candidate metadata**, but an article authored by an INEO researcher is not automatically an INEO-funded publication.
+The site now supports a living searchable catalogue for scientific works authored by researchers Filipe selected to query. OpenAlex and ORCID supply **candidate metadata**, but an article authored by a selected researcher is not automatically an INEO-funded publication. Do not use automatically collected publication counts as institutional impact metrics without a defined attribution policy.
 
-The planned workflow is: retrieve candidates, deduplicate by DOI, associate authors with verified researchers, have an editor validate inclusion and attribution, then publish checked records. Never fill the public site with speculative bibliographic data or imply funding without evidence.
+Filipe supplied an initial cohort of 16 names, institutional abbreviations and ORCIDs, preserved in `content/researchers.json`. These are **initial search subjects, not a definitive roster of current institutional membership**. `scripts/sync-openalex.mjs` queries each ORCID directly, looks up the OpenAlex author profile for traceability, retrieves the full page-based list of articles and reviews, deduplicates overlapping publications by DOI/OpenAlex ID, and generates `dist/content/openalex.json` during the GitHub Pages build. No visitor's browser calls the live API, no API credential is published, and no generated catalogue data is committed to source automatically. The workflow runs on push, manual dispatch, and a daily GitHub Actions schedule. A free key may be configured under the `OPENALEX_API_KEY` Actions secret to support continuous use.
 
-The prototype's `content/publications.json` is intentionally empty. Only entries with `verified: true`, a title and a valid year are displayed. Searching and filtering logic is ready for validated records. The schema is documented in `README.md`.
+The UI explicitly labels those records as *automated OpenAlex metadata / publications of the selected researchers*, groups them by year (descending), supports text/year/researcher filtering, and incrementally loads more results. This directly implements Filipe's requested discovery view without falsely labeling all records as INEO outputs. An editor can later verify individual works and attribution in the separate curated register.
+
+The prototype's `content/publications.json` remains intentionally empty. Only entries with `verified: true`, a title and a valid year from this **separately curated register** are presented as verified. The automated feed has `verified:false` and is displayed with a prominent explanatory label instead. A verified record supersedes a duplicate OpenAlex candidate. Tests and maintenance instructions are in `README.md`.
 
 ## Existing implementation
 
@@ -83,7 +85,8 @@ The prototype's `content/publications.json` is intentionally empty. Only entries
 - `styles.css`: responsive light visual system with a predominantly white background and accessible focus states.
 - `app.js`: PT/EN dictionary, scientific-stage controls, reduced-motion interaction, historic hub selector and publication catalogue rendering.
 - `assets/ineo-logo.png`: official supplied logo; retain original bytes.
-- `content/publications.json`: verified-publication data source, intentionally empty.
+- `content/publications.json`: verified-publication data source, intentionally empty. `content/researchers.json` holds the initial search cohort; `content/openalex.json` is a local placeholder replaced during GitHub Pages deployment.
+- `scripts/sync-openalex.mjs`: build-time automated OpenAlex harvest. `scripts/test-openalex.mjs`: deterministic mocked API tests, including pagination, DOI deduplication, and rate-limit retry.
 - `scripts/validate.mjs`: checks bilingual key parity, local anchors, JSON schema, logo presence, and reduced-motion support.
 - `.github/workflows/pages.yml`: static deploy workflow for GitHub Pages when Pages is enabled.
 - `README.md`: setup, publication schema, deployment and limitations.

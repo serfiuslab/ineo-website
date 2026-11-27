@@ -8,7 +8,7 @@ Prototype of the bilingual portal for the **Instituto Nacional de Eletrônica Or
 - **Science starts on the homepage:** three interactive scientific explanations, with a motion control and support for reduced-motion preferences.
 - **Bilingual by design:** Portuguese and English share the same content structure and URL. The chosen language is saved locally.
 - **Renewed research programme:** four strategic application areas (energy, health, agriculture and sustainable electronics), cross-cutting modelling/AI, seven geographic hubs and an external link to the earlier archive.
-- **Verified scholarly records:** an empty, ready-to-use catalogue accepts manually validated publications. We do not infer funding or network membership from a DOI alone.
+- **OpenAlex publication discovery:** a daily refreshed catalogue of articles and reviews by an initial, user-supplied 16-researcher ORCID cohort; automated candidates are clearly distinct from verified INEO project output.
 - **Easy team maintenance:** no frameworks, package installation, external backend or build step required for local development.
 - **Preserved institutional memory:** a bilingual history page with archival text, interactive explanations and references, plus a five-photo locally hosted gallery from the previous site.
 - **Annual meeting:** top navigation and a dedicated landing page linking to the 2026 Workshop proceedings on Even3; this is not a registration link.
@@ -25,7 +25,7 @@ Open `http://localhost:8000`. A local HTTP server is recommended because publica
 
 ## GitHub Pages
 
-This repository includes `.github/workflows/pages.yml`, which prepares and publishes the static site when changes are pushed to the `main` branch.
+This repository includes `.github/workflows/pages.yml`, which prepares and publishes the static site when changes are pushed to the `main` branch, when manually dispatched, and on a daily schedule (07:25 UTC, 04:25 São Paulo).
 
 On GitHub, open **Settings → Pages → Build and deployment → Source → GitHub Actions**.
 
@@ -44,7 +44,28 @@ The original historical text includes membership counts and references to the pe
 
 The header uses the original INEO logo asset without modifying the PNG. The crop and scale can be adjusted in the `.brand-crop` rules of `styles.css`; do not alter the original logo or clip its subtitle.
 
-## Add publications
+## OpenAlex automation and publication discovery
+
+Filipe supplied 16 researcher names, institutional abbreviations and ORCIDs for a first search cohort. This is **not an official, complete INEO membership roster**. They are maintained in `content/researchers.json`. To add someone, append a `name`, `institution` and valid `orcid` entry, then run the checks below.
+
+The GitHub Actions workflow runs `scripts/sync-openalex.mjs` **every day**, on manual dispatch and on pushes to `main`. At build time, it looks up each ORCID in OpenAlex, retrieves the full paginated list of articles and reviews associated with that ORCID, deduplicates overlapping works by DOI (or OpenAlex work ID when no DOI exists), and writes `dist/content/openalex.json`. This file, rather than a live API request from the visitor's browser, powers the static catalogue. An API error stops deployment, preserving the previously published version; the workflow logs profile-level retrieval counts and overall totals.
+
+OpenAlex supports basic page-based pagination up to 10,000 results. The sync refuses to truncate a researcher beyond that limit. It has retry/backoff for `429` and transient server errors, and reports any author profile that OpenAlex cannot resolve.
+
+The build can make occasional anonymous API requests without a key. **For a sustained production workflow, create a free OpenAlex key and store it in the GitHub repository as an Actions secret named `OPENALEX_API_KEY`** (Settings → Secrets and variables → Actions → New repository secret). The key is only injected into the GitHub Actions process, never embedded in HTML, browser JavaScript or published JSON. See the [current OpenAlex authentication guide](https://help.openalex.org/api/authentication/).
+
+The visible catalogue groups results by publication year, descending, with title search, year and researcher filters, and a Load More control. Every automated card is labeled as OpenAlex metadata, not an independently verified INEO result. A paper by a selected researcher is **not automatically INEO-funded** or a result of the renewed institute. OpenAlex metadata can contain errors and must be reviewed before being included in institutional reports.
+
+The repository deliberately keeps the source `content/openalex.json` as an empty preview placeholder. The actual refreshed dataset is generated into `dist/` for each successful deployment, avoiding daily auto-commits or mixing unreviewed records into curated source material.
+
+For local automated checks (which use deterministic mock OpenAlex responses rather than network access):
+
+```bash
+node scripts/test-openalex.mjs
+node scripts/validate.mjs
+```
+
+## Add individually verified INEO publications
 
 Edit `content/publications.json`. Each verified record follows this structure:
 
@@ -66,9 +87,9 @@ Edit `content/publications.json`. Each verified record follows this structure:
 }
 ```
 
-The example above is documentation only: the actual catalogue starts empty. A record is rendered only when `verified` is `true`, the title is present and the year is valid.
+The example above is documentation only: the curated catalogue starts empty. A manually curated record is rendered only when `verified` is `true`, the title is present and the year is valid. These records remain separate from the automated OpenAlex candidates and take precedence when the same DOI appears in both sources.
 
-Potential future sources for candidate records: OpenAlex, ORCID and Crossref. Their metadata may help create a *review queue*, but human review is required to determine a paper's relationship to INEO and any funding acknowledgment. Do not auto-publish unreviewed candidates.
+Human review is required to determine a paper's relationship to INEO and any funding acknowledgment. The automated OpenAlex feed is displayed in an explicitly unverified researcher-output section, not entered into this reviewed register.
 
 ## Translation maintenance
 

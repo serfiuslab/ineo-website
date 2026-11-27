@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="app.js?v=20261127-archive" defer></script>
+    <script src="app.js?v=20261127-openalex" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip">Pular para o conteúdo</a>
@@ -201,10 +201,12 @@
         </div>
       </section>
 
-      <section class="publications-section section-space container" id="publicacoes" aria-labelledby="publications-title"><div class="section-heading heading-split"><div><p class="section-kicker" data-i18n="publicationsKicker">CONHECIMENTO COMPARTILHADO</p><h2 id="publications-title" data-i18n-html="publicationsTitle">A produção científica <em>em um só lugar.</em></h2></div><p class="section-heading-aside" data-i18n="publicationsLead">Estamos preparando um catálogo curado das publicações da rede, com busca por título, autoria, tema e DOI, além de filtros por ano e área.</p></div>
-        <div class="catalog-shell"><div class="catalog-top"><div class="catalog-title"><span class="catalog-icon" aria-hidden="true">✳</span><span data-i18n="catalogTitle">Biblioteca de publicações</span><span class="catalog-status" data-i18n="catalogStatus">EM IMPLANTAÇÃO</span></div><span class="catalog-source">OpenAlex · Crossref · ORCID</span></div>
-          <div class="catalog-filters"><label class="search-field"><span class="search-symbol" aria-hidden="true"></span><span class="sr-only" data-i18n="catalogSearchLabel">Buscar publicações</span><input type="search" id="publication-search" placeholder="Buscar título, autor ou DOI..." data-i18n-placeholder="catalogPlaceholder" /></label><select id="publication-year" aria-label="Filtrar por ano" data-i18n-aria="filterYear"><option value="all" data-i18n="catalogAllYears">Todos os anos</option></select><select id="publication-topic" aria-label="Filtrar por tema" data-i18n-aria="filterTopic"><option value="all" data-i18n="catalogAllTopics">Todos os temas</option></select></div>
+      <section class="publications-section section-space container" id="publicacoes" aria-labelledby="publications-title"><div class="section-heading heading-split"><div><p class="section-kicker" data-i18n="publicationsKicker">CONHECIMENTO COMPARTILHADO</p><h2 id="publications-title" data-i18n-html="publicationsTitle">A produção científica <em>em um só lugar.</em></h2></div><p class="section-heading-aside" data-i18n="publicationsLead">Explore os artigos e revisões dos pesquisadores selecionados, recuperados pelo OpenAlex e organizados por ano.</p></div>
+        <div class="catalog-shell"><div class="catalog-top"><div class="catalog-title"><span class="catalog-icon" aria-hidden="true">✳</span><span data-i18n="catalogTitle">Publicações dos pesquisadores</span><span class="catalog-status" data-i18n="catalogStatus">ATUALIZAÇÃO AUTOMÁTICA</span></div><span class="catalog-source">OpenAlex · ORCID</span></div>
+          <div class="catalog-filters"><label class="search-field"><span class="search-symbol" aria-hidden="true"></span><span class="sr-only" data-i18n="catalogSearchLabel">Buscar publicações</span><input type="search" id="publication-search" placeholder="Buscar título, autor ou DOI..." data-i18n-placeholder="catalogPlaceholder" /></label><select id="publication-year" aria-label="Filtrar por ano" data-i18n-aria="filterYear"><option value="all" data-i18n="catalogAllYears">Todos os anos</option></select><select id="publication-researcher" aria-label="Filtrar por pesquisador" data-i18n-aria="filterResearcher"><option value="all" data-i18n="catalogAllResearchers">Todos os pesquisadores</option></select></div>
+          <div class="publication-sync-status" id="publication-status" aria-live="polite"></div>
           <div id="publication-results" class="publication-results" aria-live="polite"></div>
+          <div class="publication-more-wrap"><button id="publication-load-more" class="button button-outline" type="button" data-i18n="catalogMore" hidden>Carregar mais publicações</button></div>
           <div class="catalog-bottom"><p data-i18n="catalogMethod">A inclusão de um artigo dependerá de verificação de vínculo com a rede. Metadados automáticos não equivalem a comprovação de financiamento pelo INEO.</p><a href="https://sites.google.com/unesp.br/ineo2020/in%C3%ADcio/publica%C3%A7%C3%B5es" target="_blank" rel="noopener noreferrer" data-i18n="catalogArchive">Acessar publicações do acervo anterior</a></div>
         </div>
       </section>

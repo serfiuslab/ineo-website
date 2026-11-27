@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # Daily refresh at 07:25 UTC (04:25 in São Paulo), including when source is unchanged.
+    - cron: '25 7 * * *'
 
 permissions:
   contents: read
@@ -29,7 +32,9 @@ jobs:
           node --check app.js
           node --check history.js
           node --check gallery.js
+          node --check scripts/sync-openalex.mjs
           node scripts/validate.mjs
+          node scripts/test-openalex.mjs
 
       - name: Prepare static site
         run: |
@@ -37,6 +42,11 @@ jobs:
           cp ./*.html ./*.css ./*.js dist/
           cp -R assets content dist/
           touch dist/.nojekyll
+
+      - name: Refresh OpenAlex publication catalogue
+        env:
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+        run: node scripts/sync-openalex.mjs --output dist/content/openalex.json
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
