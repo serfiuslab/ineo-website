@@ -55,11 +55,13 @@ for (const key of Object.keys(narratives.pt)) {
 }
 assert.equal((historyJs.match(/^  '.*\(\d{4}\).*',?$/gm) ?? []).length, 11, 'Expected 11 supplied historical references');
 
-const galleryMatch = galleryJs.match(/const galleryPhotos = ([\s\S]+?);\s+const galleryCopy =/);
+const galleryMatch = galleryJs.match(/const galleryPhotos = ([\s\S]+?);\s+const photoCaptions =/);
 assert.ok(galleryMatch, 'Cannot locate gallery data');
 const galleryPhotos = vm.runInNewContext(`(${galleryMatch[1]})`);
-assert.equal(galleryPhotos.length, 6, 'Expected six historical carousel photographs');
-assert.ok(galleryPhotos.every(url => url.startsWith('https://sites.google.com/sitesv-images-rt/')), 'Unexpected gallery image source');
+assert.equal(galleryPhotos.length, 5, 'Expected five photographs from the historical carousel');
+assert.ok(galleryPhotos.every(src => src.startsWith('assets/gallery/') && fs.existsSync(path.join(root, src))), 'Gallery photos must be bundled locally');
+assert.ok(galleryPhotos.every(src => fs.statSync(path.join(root, src)).size > 10000), 'Gallery photo files must not be empty');
+assert.ok(historyJs.includes("'assets/gallery/research-network-group.jpg'"), 'History photograph must be bundled locally');
 
 for (const item of publications.publications) {
   assert.equal(typeof item.verified, 'boolean', 'Every publication needs a verified flag');

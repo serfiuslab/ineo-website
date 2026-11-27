@@ -10,8 +10,8 @@ Prototype of the bilingual portal for the **Instituto Nacional de Eletrônica Or
 - **Renewed research programme:** four strategic application areas (energy, health, agriculture and sustainable electronics), cross-cutting modelling/AI, seven geographic hubs and an external link to the earlier archive.
 - **Verified scholarly records:** an empty, ready-to-use catalogue accepts manually validated publications. We do not infer funding or network membership from a DOI alone.
 - **Easy team maintenance:** no frameworks, package installation, external backend or build step required for local development.
-- **Preserved institutional memory:** a bilingual history page with archival text, interactive explanations and references, plus a six-photo gallery from the previous site.
-- **Annual meeting:** top navigation and a dedicated landing page, ready for the verified Even3 link Filipe will provide.
+- **Preserved institutional memory:** a bilingual history page with archival text, interactive explanations and references, plus a five-photo locally hosted gallery from the previous site.
+- **Annual meeting:** top navigation and a dedicated landing page linking to the 2026 Workshop proceedings on Even3; this is not a registration link.
 
 ## Run locally
 
@@ -36,8 +36,8 @@ The public project URL is <https://serfiuslab.github.io/ineo-website/>. Deployme
 ## Additional pages
 
 - `historia.html`: historical account of organic electronics and the INEO network. The Portuguese and English paragraphs live in `history.js`, together with an interactive timeline and conceptual conducting-polymer illustration.
-- `galeria.html`: photographic archive with six carousel images extracted from the previous public Google Site. `gallery.js` stores the source image URLs and the lightbox interactions. These images are externally hosted until the institute supplies approved original files; keep their source acknowledgement and do not invent individual captions or dates.
-- `encontro.html`: temporary landing page for **Encontro INEO Anual**. Once Filipe supplies the confirmed Even3 URL, update the visible link or destination without guessing an edition, date or registration information.
+- `galeria.html`: photographic archive with five locally hosted web-resolution captures of the public photo carousel on the earlier Google Site. `gallery.js` stores the local paths, contextual bilingual captions and lightbox interactions. Files live in `assets/gallery/`. They are preservation copies from the public site, **not original camera files**; replace them with higher-resolution approved originals when received, preserving source acknowledgement. Do not guess personal names, event dates or locations absent visible evidence.
+- `encontro.html`: **Encontro INEO Anual** landing page linking to the [INEO Workshop 2026 proceedings on Even3](https://www.even3.com.br/anais/workshop-do-ineo-2026/). Proceedings are not the same as future event registration; add a separate registration CTA only when officially confirmed.
 - `subpages.css`: styling for these editorial pages, with the shared header and logo handled by `styles.css`.
 
 The original historical text includes membership counts and references to the period ending in 2023. It is clearly marked as archival, not current. Bibliographic references are transcribed from the earlier website and may need normalization. The current institutional name is *Instituto Nacional de Eletrônica Orgânica e Sustentável*.
@@ -74,7 +74,7 @@ Potential future sources for candidate records: OpenAlex, ORCID and Crossref. Th
 
 All user-facing interface copy lives in `translations.pt` and `translations.en` in `app.js`. Add the same key to both languages when extending the site. Proper names and DOI metadata are not translated.
 
-Long-form historical narratives are stored in matching `pt` and `en` sections inside `history.js`. Gallery archival captions likewise have PT/EN entries in `gallery.js`. Run the validation script to check page links, dictionary parity, historical sections and the six gallery sources.
+Long-form historical narratives are stored in matching `pt` and `en` sections inside `history.js`. Gallery archival captions likewise have PT/EN entries in `gallery.js`. Run the validation script to check page links, dictionary parity, historical sections and the five locally bundled gallery photos.
 
 ## Content status
 

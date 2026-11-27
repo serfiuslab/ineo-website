@@ -162,6 +162,6 @@ referenceList.replaceChildren(...historyReferences.map(reference => {
   const li = document.createElement('li'); li.textContent = reference; return li;
 }));
 
-document.getElementById('historic-photo').src = 'https://sites.google.com/sitesv-images-rt/APXyLQf2NAiMN4gk50ai7MxN7I8pLqyL_UqoiF5g6W0Z8QWSG5DDhV7t2tRdRnswMZTH12ZoKe_8_JZTIjLXNWTnAIS8RS1jEtFiFQMdW0p6ci8AlotdV_coaRmGinKHqcBOdqmxsA-J7EzRXDv7YiqhDBJdtd47rY5YHTL7Kz5zjNv5FFRN90VIVKPGpksQ28k=w16383';
+document.getElementById('historic-photo').src = 'assets/gallery/research-network-group.jpg';
 window.addEventListener('ineo:language', event => renderHistory(event.detail.lang));
 renderHistory(document.documentElement.lang === 'en' ? 'en' : 'pt');

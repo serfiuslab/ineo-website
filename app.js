@@ -68,7 +68,7 @@ const translations = {
     pageTitle: 'INEO | Eletrônica Orgânica e Sustentável', pageDescription: 'INEO: uma rede brasileira de pesquisa em eletrônica orgânica e sustentável para energia, saúde, agricultura e novas tecnologias.',
     historyPageTitle: 'História do INEO | Eletrônica Orgânica', historyPageDescription: 'Conheça as origens da eletrônica orgânica, os polímeros condutores e a trajetória do IMMP ao INEO.',
     galleryPageTitle: 'Galeria de fotos | INEO', galleryPageDescription: 'Fotografias do acervo institucional anterior do INEO, preservando registros de encontros e atividades da rede.',
-    eventPageTitle: 'Encontro INEO Anual | INEO', eventPageDescription: 'Página dedicada ao Encontro INEO Anual. A página do evento no Even3 será vinculada em breve.',
+    eventPageTitle: 'Encontro INEO Anual | INEO', eventPageDescription: 'Consulte os anais do Workshop INEO 2026 na Even3 e conheça os encontros da rede.',
     storyKicker: 'NOSSA MEMÓRIA CIENTÍFICA', storyTitle: 'Uma história de ciência <em>feita em rede.</em>',
     storyLead: 'Dos primeiros polímeros condutores à criação do INEO: descubra a trajetória que conecta moléculas, pesquisadores e instituições brasileiras.',
     storyNavigationScience: 'Origens da eletrônica orgânica', storyNavigationInstitute: 'História do INEO', storySource: 'Acervo histórico do INEO, contextualizado para a nova fase do instituto.',
@@ -94,7 +94,7 @@ const translations = {
     galleryArchiveLink: 'Visitar o acervo original', galleryBackHome: 'Voltar à página inicial',
     eventKicker: 'A REDE SE ENCONTRA', eventTitle: 'Encontro <em>INEO Anual.</em>',
     eventLead: 'Um espaço para compartilhar resultados, construir colaborações e aproximar pesquisadores e estudantes da eletrônica orgânica e sustentável.',
-    eventComing: 'Página do encontro em preparação', eventComingText: 'O endereço oficial do evento na Even3 será adicionado aqui assim que estiver disponível. Por enquanto, este espaço mantém a navegação do novo portal pronta.',
+    eventProceedingsTitle: 'Anais do Workshop INEO 2026', eventProceedingsText: 'Acesse os trabalhos e registros científicos publicados nos anais do Workshop INEO 2026. Este link é para os anais, não para inscrições em edições futuras.', eventProceedingsCta: 'Consultar os anais na Even3',
     eventHistoryTitle: 'A tradição dos encontros', eventHistoryText: 'Os workshops da rede têm origem no período do IMMP e seguem como espaço de integração científica. Consulte o arquivo institucional para registros de edições anteriores.',
     eventHistoryLink: 'Conhecer o histórico dos workshops', eventBackHome: 'Voltar à página inicial'
   },
@@ -163,7 +163,7 @@ const translations = {
     pageTitle: 'INEO | Organic and Sustainable Electronics', pageDescription: 'INEO: a Brazilian research network advancing organic and sustainable electronics for energy, health, agriculture and emerging technologies.',
     historyPageTitle: 'INEO History | Organic Electronics', historyPageDescription: 'Explore the origins of organic electronics, conducting polymers and the path from IMMP to INEO.',
     galleryPageTitle: 'Photo Gallery | INEO', galleryPageDescription: 'Photographs from INEO’s previous institutional website, preserving scientific meetings and network memories.',
-    eventPageTitle: 'INEO Annual Meeting | INEO', eventPageDescription: 'INEO Annual Meeting page. The official Even3 registration link will be added soon.',
+    eventPageTitle: 'INEO Annual Meeting | INEO', eventPageDescription: 'Access the INEO Workshop 2026 proceedings on Even3 and learn about the network’s meetings.',
     storyKicker: 'OUR SCIENTIFIC MEMORY', storyTitle: 'A history of science <em>built together.</em>',
     storyLead: 'From the first conducting polymers to the creation of INEO, discover the journey connecting molecules, researchers and Brazilian institutions.',
     storyNavigationScience: 'Origins of organic electronics', storyNavigationInstitute: 'History of INEO', storySource: 'INEO historical archive, placed in context for the renewed institute.',
@@ -189,7 +189,7 @@ const translations = {
     galleryArchiveLink: 'Visit the original archive', galleryBackHome: 'Return to homepage',
     eventKicker: 'THE NETWORK MEETS', eventTitle: 'INEO <em>Annual Meeting.</em>',
     eventLead: 'A space to share research, build collaborations and connect researchers and students working in organic and sustainable electronics.',
-    eventComing: 'Meeting page in preparation', eventComingText: 'The official Even3 event URL will be added here as soon as it is available. For now, this page gives the annual meeting a dedicated place in the new portal.',
+    eventProceedingsTitle: 'INEO Workshop 2026 Proceedings', eventProceedingsText: 'Explore the scientific contributions published in the INEO Workshop 2026 proceedings. This link is for the proceedings, not registration for upcoming editions.', eventProceedingsCta: 'View proceedings on Even3',
     eventHistoryTitle: 'A tradition of meeting', eventHistoryText: 'The network’s workshops began in the IMMP era and remain a meeting point for scientific exchange. The institutional archive preserves information about previous editions.',
     eventHistoryLink: 'Browse past workshops', eventBackHome: 'Return to homepage'
   }

@@ -98,6 +98,7 @@
 .event-card { display: grid; grid-template-columns: 190px 1fr; gap: 50px; border-radius: 25px; border: 1px solid #dbe8f1; padding: clamp(28px, 5vw, 66px); align-items: center; background: linear-gradient(110deg, #eaf6ff 0%, #fff 60%, #f3fbf6 100%); }
 .event-card h2 { font-size: clamp(28px, 3vw, 42px); letter-spacing: -.045em; margin: 15px 0; }
 .event-card p:not(.section-kicker) { max-width: 750px; color: #647e91; font-size: 17px; margin-bottom: 0; }
+.event-card .button { margin-top: 23px; }
 .event-symbol { width: 165px; height: 165px; border-radius: 24px; border: 1px solid #c4e0ee; background: white; display: grid; place-items: center; position: relative; }
 .event-symbol span { width: 32px; height: 32px; position: absolute; border: 5px solid #0874c3; border-radius: 100%; }
 .event-symbol span:nth-child(1) { transform: translate(-36px,-32px); }

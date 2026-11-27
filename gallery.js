@@ -1,16 +1,32 @@
-/* Photographs come from the publicly accessible carousel on the legacy INEO homepage.
- * They are not dated or individually identified until the institutional archive is reviewed.
- * Replace external URLs with locally hosted, approved originals when they are supplied.
+/* Local copies captured from the public carousel on the legacy INEO homepage.
+ * These are web-resolution archival captures, not original camera files.
+ * People, dates and locations are not inferred without source verification.
  */
 
 const galleryPhotos = [
-  'https://sites.google.com/sitesv-images-rt/APXyLQf2NAiMN4gk50ai7MxN7I8pLqyL_UqoiF5g6W0Z8QWSG5DDhV7t2tRdRnswMZTH12ZoKe_8_JZTIjLXNWTnAIS8RS1jEtFiFQMdW0p6ci8AlotdV_coaRmGinKHqcBOdqmxsA-J7EzRXDv7YiqhDBJdtd47rY5YHTL7Kz5zjNv5FFRN90VIVKPGpksQ28k=w16383',
-  'https://sites.google.com/sitesv-images-rt/APXyLQdNRtjt2kH2B5_Ucjny1lKL62s7RLwYslzqwX5ShRHRwTxHScL5UntYjI8jtYjSin6jte7O_dxtdywEMxmmre5zYbfVBT3KaaJ_m6vBD_XFopoRKzN0renxGOMPDYrWVSP6W5qdpQ_ZR0Bzsi_qvivBaDSP1Nr6v8RCClLVMOVFHNBtp8lo1gQuRQ-Ixtw=w16383',
-  'https://sites.google.com/sitesv-images-rt/APXyLQd7LBuzLWxzJ6OT7PGJRj5fxUd3oqEQZ_kHdpsI2ySEShKynatqpnnhzWSsC2hnv2NmVWjpuLBMwug1Tlds2MePRuE3qvfaW4_wF8_cxcrHeu3iekGSVNbRToeKmj-7DCTn_pK1xK585JMvA02vnxn5fd-6ezL3Dr-kE4Mf6oq7QBcEoW7RMjZIyja-Cgc=w16383',
-  'https://sites.google.com/sitesv-images-rt/APXyLQfKiR_g5hsOROjr9UqAQ39onOr1-x74LMphFGsjRx3Sx_SMTT4qGRCtIlLcxGjiKEaN4dHkikbYOo1Y1XOMZfGqiUl48ftXxNTqQGDkeACv8wMOfcktGmhSF1z6VCQkq0U7HWuAiEDES4eFiKnhMFx1PLSgZVPUVjzaMF-jUq4FkSqtm3FzOR--9aHHBjA=w16383',
-  'https://sites.google.com/sitesv-images-rt/APXyLQdv1YSZBSE4DYTCgRTfQcydciqJK4RuehTsgpx3UqvwFENCijNLI8OJyqYrGFPQMGieyXaSzgvpmkWQKN7--b7tTe8hHniGp4DH-dIAsXMhbfRHyI4xciw3FNP47tnM1sybGc0RhDAvEoejo3MfmOXbxO5sLyuTg3-B8ddGvLz9a1CxRHdrQaPYC45N=w16383',
-  'https://sites.google.com/sitesv-images-rt/APXyLQc2LW407PGxRmlBOndZUv1agkYanZ8gngmWi6FutOSvSrwczGQBGGw2oOTz0-8uV-JxRuhuZHwO-QsUTHqyO5A0N1zokZZ1MjskWbyKRFS0_cczuR2zPKhLfz7pcOmwAnUzXVhYb7t2BjfdFYpDwIIcpooz-qUXwdpkIWDXdDsLinRR3R-d2uUF2w=w16383'
+  'assets/gallery/ineo-workshop-2023.jpg',
+  'assets/gallery/research-network-group.jpg',
+  'assets/gallery/scientific-presentation.jpg',
+  'assets/gallery/laboratory-equipment.jpg',
+  'assets/gallery/flexible-electronics.jpg'
 ];
+
+const photoCaptions = {
+  pt: [
+    'Workshop INEO 2023',
+    'Pesquisadores e integrantes da rede',
+    'Apresentação em encontro científico',
+    'Infraestrutura de laboratório',
+    'Dispositivo eletrônico flexível'
+  ],
+  en: [
+    'INEO Workshop 2023',
+    'Researchers and network participants',
+    'Presentation at a scientific meeting',
+    'Laboratory infrastructure',
+    'Flexible electronic device'
+  ]
+};
 
 const galleryCopy = {
   pt: {
@@ -39,7 +55,7 @@ function updateLightbox() {
   document.getElementById('lightbox-image').src = galleryPhotos[galleryIndex];
   document.getElementById('lightbox-image').alt = `${copy.image}, ${copy.count(current, galleryPhotos.length)}`;
   document.getElementById('lightbox-counter').textContent = copy.count(current, galleryPhotos.length);
-  document.getElementById('lightbox-caption').textContent = `${copy.title} · ${copy.source}`;
+  document.getElementById('lightbox-caption').textContent = `${photoCaptions[galleryLanguage][galleryIndex]} · ${copy.source}`;
 }
 
 function openPhoto(index, trigger) {
@@ -69,7 +85,7 @@ function renderGallery(lang) {
     image.alt = `${copy.image}, ${copy.count(index + 1, galleryPhotos.length)}`;
     const content = document.createElement('span'); content.className = 'photo-tile-copy';
     const source = document.createElement('small'); source.textContent = copy.source;
-    const title = document.createElement('strong'); title.textContent = copy.title;
+    const title = document.createElement('strong'); title.textContent = photoCaptions[lang][index];
     content.append(source, title);
     button.append(image, content);
     button.addEventListener('click', () => openPhoto(index, button));
