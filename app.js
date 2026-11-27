@@ -6,7 +6,7 @@ const translations = {
   pt: {
     skip: 'Pular para o conteúdo', navLabel: 'Navegação principal', mobileNavLabel: 'Navegação móvel', openMenu: 'Abrir menu', closeMenu: 'Fechar menu',
     brandHome: 'INEO, início', officialLogoAlt: 'INEO, Instituto Nacional de Eletrônica Orgânica e Sustentável',
-    navHome: 'Início', navInstitute: 'O Instituto', navResearch: 'Pesquisa', navNetwork: 'A Rede', navPublications: 'Publicações', navActivities: 'Atividades', navExplore: 'Explorar a ciência',
+    navHome: 'Início', navInstitute: 'O Instituto', navResearch: 'Pesquisa', navNetwork: 'A Rede', navPublications: 'Publicações', navActivities: 'Atividades', navExplore: 'Explorar a ciência', navHistory: 'História', navGallery: 'Galeria', navAnnual: 'Encontro INEO Anual',
     heroEyebrow: 'CIÊNCIA BRASILEIRA EM REDE', heroTitle: 'O futuro da eletrônica <em>começa nas moléculas.</em>',
     heroLead: 'Uma rede brasileira que conecta materiais avançados, dispositivos e inteligência artificial para investigar soluções em energia, saúde, agricultura e sustentabilidade.',
     heroCtaExplore: 'Comece a explorar', heroCtaInstitute: 'Conheça o INEO', heroTag1: 'Pesquisa colaborativa', heroTag2: 'Ciência e formação',
@@ -23,10 +23,10 @@ const translations = {
     stageDeviceDesc: 'Camadas funcionais, eletrodos e interfaces permitem explorar essas propriedades em OLEDs, células solares orgânicas e transistores. Cada arquitetura tem sua própria física.',
     instituteKicker: 'O INSTITUTO', instituteTitle: 'Conhecimento que conecta <em>pessoas e possibilidades.</em>',
     instituteLead: 'Com sede prevista no IFSC/USP e sete polos regionais, o novo INEO dá continuidade à rede brasileira de eletrônica orgânica. A proposta integra pesquisa, formação e colaboração para investigar tecnologias com menor impacto ambiental ao longo de seu ciclo de vida.',
-    visitHistory: 'Consultar acervo institucional', officialIdentity: 'Identidade visual do novo INEO',
+    visitHistory: 'Conheça a história do INEO', officialIdentity: 'Identidade visual do novo INEO',
     quickResearch: 'Linhas de pesquisa', quickResearchDesc: 'Da escala molecular à aplicação tecnológica',
     quickNetwork: 'Pesquisadores e polos', quickNetworkDesc: 'Uma rede de competências complementares',
-    quickGovernance: 'História e gestão', quickGovernanceDesc: 'Memória, coordenação e documentação',
+    quickGovernance: 'História do INEO', quickGovernanceDesc: 'Da eletrônica orgânica à rede nacional',
     researchKicker: 'NOSSAS FRENTES DE PESQUISA', researchTitle: 'Da matéria fundamental <em>ao mundo real.</em>',
     researchLead: 'O novo projeto organiza suas aplicações em quatro eixos estratégicos. Todos combinam ciência fundamental, desenvolvimento de materiais e avaliação de seu impacto.',
     research1Category: 'ENERGIA RENOVÁVEL', research1Title: 'Conversão e armazenamento', research1Desc: 'Pesquisa em células solares orgânicas, baterias leves e flexíveis e supercapacitores para investigar novas soluções de conversão e armazenamento de energia.',
@@ -65,12 +65,43 @@ const translations = {
     closingKicker: 'O CONHECIMENTO NOS CONECTA', closingTitle: 'Da molécula à sociedade. <em>Ciência para uma eletrônica mais sustentável.</em>', closingCta: 'Voltar ao início',
     footerFullName: 'Instituto Nacional de Eletrônica Orgânica e Sustentável', footerNavigate: 'Navegue', footerExplore: 'Descubra', footerLegacy: 'Acervo institucional anterior',
     footerPrototype: 'Protótipo de desenvolvimento. Informações institucionais em revisão.', backTop: 'Voltar ao topo',
-    pageTitle: 'INEO | Eletrônica Orgânica e Sustentável', pageDescription: 'INEO: uma rede brasileira de pesquisa em eletrônica orgânica e sustentável para energia, saúde, agricultura e novas tecnologias.'
+    pageTitle: 'INEO | Eletrônica Orgânica e Sustentável', pageDescription: 'INEO: uma rede brasileira de pesquisa em eletrônica orgânica e sustentável para energia, saúde, agricultura e novas tecnologias.',
+    historyPageTitle: 'História do INEO | Eletrônica Orgânica', historyPageDescription: 'Conheça as origens da eletrônica orgânica, os polímeros condutores e a trajetória do IMMP ao INEO.',
+    galleryPageTitle: 'Galeria de fotos | INEO', galleryPageDescription: 'Fotografias do acervo institucional anterior do INEO, preservando registros de encontros e atividades da rede.',
+    eventPageTitle: 'Encontro INEO Anual | INEO', eventPageDescription: 'Página dedicada ao Encontro INEO Anual. A página do evento no Even3 será vinculada em breve.',
+    storyKicker: 'NOSSA MEMÓRIA CIENTÍFICA', storyTitle: 'Uma história de ciência <em>feita em rede.</em>',
+    storyLead: 'Dos primeiros polímeros condutores à criação do INEO: descubra a trajetória que conecta moléculas, pesquisadores e instituições brasileiras.',
+    storyNavigationScience: 'Origens da eletrônica orgânica', storyNavigationInstitute: 'História do INEO', storySource: 'Acervo histórico do INEO, contextualizado para a nova fase do instituto.',
+    storyScienceKicker: 'UMA REVOLUÇÃO NOS MATERIAIS', storyScienceTitle: 'Eletrônica Orgânica',
+    storyInstituteKicker: 'DO IMMP AO INEO', storyInstituteTitle: 'INEO: Instituto Nacional de Eletrônica Orgânica',
+    storyInstituteLead: 'Uma rede construída por décadas de pesquisa, ensino, colaboração e articulação nacional.',
+    storyArchiveBadge: 'REGISTRO HISTÓRICO',
+    storyArchiveNote: 'Os parágrafos e números abaixo reproduzem o relato do site institucional anterior, referente ao período até 2023. Expressões como “hoje” devem ser lidas nesse contexto, não como dados atuais do INEO renovado.',
+    storyReferences: 'Referências da história da Eletrônica Orgânica',
+    storyReferenceNote: 'Referências preservadas conforme o material histórico fornecido. A normalização bibliográfica ainda será revisada.',
+    storyFutureTitle: 'Uma nova etapa: orgânica e sustentável',
+    storyFutureDesc: 'A proposta contemplada do novo INEO amplia o horizonte para energia, saúde, agricultura e eletrônica sustentável, unindo sete polos regionais e diferentes competências científicas. A memória da rede anterior permanece como parte dessa continuidade.',
+    storyGalleryCta: 'Explore a galeria histórica', storyBackHome: 'Voltar à página inicial',
+    storyDopingCaption: 'Dopagem e condutividade: uma ilustração conceitual', storyDopingOff: 'Sem dopagem', storyDopingOn: 'Com dopagem',
+    storyDopingNotice: 'Esquema educacional, não corresponde a uma medida experimental nem a uma simulação quantitativa.',
+    storyDopingOffText: 'Em sua forma não dopada, o poliacetileno apresenta comportamento muito menos condutor.',
+    storyDopingOnText: 'Nos trabalhos pioneiros, a dopagem química elevou a condutividade em aproximadamente dez ordens de grandeza.',
+    storyTimelineLabel: 'Explore marcos da eletrônica orgânica',
+    galleryKicker: 'MEMÓRIA EM IMAGENS', galleryTitle: 'Ciência também é feita <em>de encontros.</em>',
+    galleryLead: 'Registros fotográficos recuperados do carrossel do antigo site do INEO. Uma homenagem às pessoas e aos momentos que construíram a rede.',
+    gallerySourceNote: 'Fonte: carrossel público do site institucional anterior. Anos, locais e nomes individuais serão adicionados após conferência do acervo.',
+    galleryOpen: 'Ampliar fotografia', galleryClose: 'Fechar fotografia', galleryPrevious: 'Fotografia anterior', galleryNext: 'Próxima fotografia',
+    galleryArchiveLink: 'Visitar o acervo original', galleryBackHome: 'Voltar à página inicial',
+    eventKicker: 'A REDE SE ENCONTRA', eventTitle: 'Encontro <em>INEO Anual.</em>',
+    eventLead: 'Um espaço para compartilhar resultados, construir colaborações e aproximar pesquisadores e estudantes da eletrônica orgânica e sustentável.',
+    eventComing: 'Página do encontro em preparação', eventComingText: 'O endereço oficial do evento na Even3 será adicionado aqui assim que estiver disponível. Por enquanto, este espaço mantém a navegação do novo portal pronta.',
+    eventHistoryTitle: 'A tradição dos encontros', eventHistoryText: 'Os workshops da rede têm origem no período do IMMP e seguem como espaço de integração científica. Consulte o arquivo institucional para registros de edições anteriores.',
+    eventHistoryLink: 'Conhecer o histórico dos workshops', eventBackHome: 'Voltar à página inicial'
   },
   en: {
     skip: 'Skip to content', navLabel: 'Main navigation', mobileNavLabel: 'Mobile navigation', openMenu: 'Open menu', closeMenu: 'Close menu',
     brandHome: 'INEO, home', officialLogoAlt: 'INEO, National Institute of Organic and Sustainable Electronics',
-    navHome: 'Home', navInstitute: 'The Institute', navResearch: 'Research', navNetwork: 'The Network', navPublications: 'Publications', navActivities: 'Activities', navExplore: 'Explore the science',
+    navHome: 'Home', navInstitute: 'The Institute', navResearch: 'Research', navNetwork: 'The Network', navPublications: 'Publications', navActivities: 'Activities', navExplore: 'Explore the science', navHistory: 'History', navGallery: 'Gallery', navAnnual: 'INEO Annual Meeting',
     heroEyebrow: 'BRAZILIAN SCIENCE, CONNECTED', heroTitle: 'The future of electronics <em>begins with molecules.</em>',
     heroLead: 'A Brazilian research network connecting advanced materials, devices and artificial intelligence to explore solutions for energy, health, agriculture and sustainability.',
     heroCtaExplore: 'Start exploring', heroCtaInstitute: 'Meet INEO', heroTag1: 'Collaborative research', heroTag2: 'Science and education',
@@ -87,10 +118,10 @@ const translations = {
     stageDeviceDesc: 'Functional layers, electrodes and interfaces make it possible to harness these properties in OLEDs, organic solar cells and transistors. Each architecture has distinct physics.',
     instituteKicker: 'THE INSTITUTE', instituteTitle: 'Knowledge connecting <em>people and possibilities.</em>',
     instituteLead: 'With its proposed headquarters at IFSC/USP and seven regional hubs, the renewed INEO builds on Brazil’s organic electronics research network. Its proposal combines research, education and collaboration to investigate technologies with a lower environmental impact throughout their life cycle.',
-    visitHistory: 'Visit the institutional archive', officialIdentity: 'New INEO visual identity',
+    visitHistory: 'Discover INEO’s history', officialIdentity: 'New INEO visual identity',
     quickResearch: 'Research areas', quickResearchDesc: 'From molecules to technological applications',
     quickNetwork: 'Researchers and hubs', quickNetworkDesc: 'A network of complementary expertise',
-    quickGovernance: 'History and governance', quickGovernanceDesc: 'Heritage, coordination and documents',
+    quickGovernance: 'INEO history', quickGovernanceDesc: 'From organic electronics to a national network',
     researchKicker: 'OUR RESEARCH AREAS', researchTitle: 'From fundamental science <em>to the real world.</em>',
     researchLead: 'The renewed project focuses its applications on four strategic areas. Each brings together fundamental science, materials development and impact assessment.',
     research1Category: 'RENEWABLE ENERGY', research1Title: 'Conversion and storage', research1Desc: 'Research on organic solar cells, lightweight and flexible batteries, and supercapacitors to explore new approaches to energy conversion and storage.',
@@ -129,7 +160,38 @@ const translations = {
     closingKicker: 'CONNECTED BY KNOWLEDGE', closingTitle: 'From molecules to society. <em>Science for more sustainable electronics.</em>', closingCta: 'Back to the beginning',
     footerFullName: 'National Institute of Organic and Sustainable Electronics', footerNavigate: 'Navigate', footerExplore: 'Discover', footerLegacy: 'Previous institutional archive',
     footerPrototype: 'Development prototype. Institutional information under review.', backTop: 'Back to top',
-    pageTitle: 'INEO | Organic and Sustainable Electronics', pageDescription: 'INEO: a Brazilian research network advancing organic and sustainable electronics for energy, health, agriculture and emerging technologies.'
+    pageTitle: 'INEO | Organic and Sustainable Electronics', pageDescription: 'INEO: a Brazilian research network advancing organic and sustainable electronics for energy, health, agriculture and emerging technologies.',
+    historyPageTitle: 'INEO History | Organic Electronics', historyPageDescription: 'Explore the origins of organic electronics, conducting polymers and the path from IMMP to INEO.',
+    galleryPageTitle: 'Photo Gallery | INEO', galleryPageDescription: 'Photographs from INEO’s previous institutional website, preserving scientific meetings and network memories.',
+    eventPageTitle: 'INEO Annual Meeting | INEO', eventPageDescription: 'INEO Annual Meeting page. The official Even3 registration link will be added soon.',
+    storyKicker: 'OUR SCIENTIFIC MEMORY', storyTitle: 'A history of science <em>built together.</em>',
+    storyLead: 'From the first conducting polymers to the creation of INEO, discover the journey connecting molecules, researchers and Brazilian institutions.',
+    storyNavigationScience: 'Origins of organic electronics', storyNavigationInstitute: 'History of INEO', storySource: 'INEO historical archive, placed in context for the renewed institute.',
+    storyScienceKicker: 'A MATERIALS REVOLUTION', storyScienceTitle: 'Organic Electronics',
+    storyInstituteKicker: 'FROM IMMP TO INEO', storyInstituteTitle: 'INEO: National Institute of Organic Electronics',
+    storyInstituteLead: 'A network built through decades of research, teaching, collaboration and national coordination.',
+    storyArchiveBadge: 'HISTORICAL RECORD',
+    storyArchiveNote: 'The following account and figures reproduce material from the previous institutional site and describe the period up to 2023. Expressions such as “today” refer to that period, not current statistics for the renewed INEO.',
+    storyReferences: 'References on the history of Organic Electronics',
+    storyReferenceNote: 'References retained from the supplied historical material. Bibliographic formatting is pending review.',
+    storyFutureTitle: 'A new chapter: organic and sustainable',
+    storyFutureDesc: 'The approved proposal for the renewed INEO brings energy, health, agriculture and sustainable electronics into focus, connecting seven regional hubs and complementary scientific expertise. The earlier network’s history remains central to this continuity.',
+    storyGalleryCta: 'Explore the historical gallery', storyBackHome: 'Return to homepage',
+    storyDopingCaption: 'Doping and conductivity: a conceptual illustration', storyDopingOff: 'Undoped', storyDopingOn: 'Doped',
+    storyDopingNotice: 'Educational schematic, not an experimental measurement or a quantitative simulation.',
+    storyDopingOffText: 'In its undoped form, polyacetylene shows substantially lower conductivity.',
+    storyDopingOnText: 'In pioneering studies, chemical doping increased its conductivity by approximately ten orders of magnitude.',
+    storyTimelineLabel: 'Explore milestones in organic electronics',
+    galleryKicker: 'MEMORIES IN IMAGES', galleryTitle: 'Science is also made <em>of encounters.</em>',
+    galleryLead: 'Photographs retrieved from the carousel on INEO’s earlier website, celebrating the people and moments that shaped the network.',
+    gallerySourceNote: 'Source: public carousel on the previous institutional website. Dates, places and individual names will be added after archive verification.',
+    galleryOpen: 'Enlarge photograph', galleryClose: 'Close photograph', galleryPrevious: 'Previous photograph', galleryNext: 'Next photograph',
+    galleryArchiveLink: 'Visit the original archive', galleryBackHome: 'Return to homepage',
+    eventKicker: 'THE NETWORK MEETS', eventTitle: 'INEO <em>Annual Meeting.</em>',
+    eventLead: 'A space to share research, build collaborations and connect researchers and students working in organic and sustainable electronics.',
+    eventComing: 'Meeting page in preparation', eventComingText: 'The official Even3 event URL will be added here as soon as it is available. For now, this page gives the annual meeting a dedicated place in the new portal.',
+    eventHistoryTitle: 'A tradition of meeting', eventHistoryText: 'The network’s workshops began in the IMMP era and remain a meeting point for scientific exchange. The institutional archive preserves information about previous editions.',
+    eventHistoryLink: 'Browse past workshops', eventBackHome: 'Return to homepage'
   }
 };
 
@@ -160,8 +222,12 @@ function setLanguage(lang) {
   state.lang = lang;
   localStorage.setItem('ineo-language', lang);
   document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
-  document.title = t('pageTitle');
-  $('meta[name="description"]').content = t('pageDescription');
+  const page = document.body.dataset.page ?? 'home';
+  const titleKey = page === 'home' ? 'pageTitle' : `${page}PageTitle`;
+  const descriptionKey = page === 'home' ? 'pageDescription' : `${page}PageDescription`;
+  document.title = t(titleKey);
+  const descriptionMeta = $('meta[name="description"]');
+  if (descriptionMeta) descriptionMeta.content = t(descriptionKey);
   document.querySelectorAll('[data-i18n]').forEach(node => { node.textContent = t(node.dataset.i18n); });
   document.querySelectorAll('[data-i18n-html]').forEach(node => { node.innerHTML = t(node.dataset.i18nHtml); });
   document.querySelectorAll('[data-i18n-placeholder]').forEach(node => { node.placeholder = t(node.dataset.i18nPlaceholder); });
@@ -173,10 +239,10 @@ function setLanguage(lang) {
     button.classList.toggle('is-active', active);
     button.setAttribute('aria-pressed', String(active));
   });
-  updateStage(state.stage);
-  renderRegions();
-  renderPublications();
-  updateMotionLabel();
+  if ($('#science-visual')) { updateStage(state.stage); updateMotionLabel(); }
+  if ($('#network-list')) renderRegions();
+  if ($('#publication-results')) renderPublications();
+  window.dispatchEvent(new CustomEvent('ineo:language', { detail: { lang } }));
 }
 
 function updateStage(stage, focusTab = false) {
@@ -329,7 +395,7 @@ function initNavigation() {
   });
   nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
   document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
-  window.addEventListener('resize', () => { if (window.innerWidth > 950) closeMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 1130) closeMenu(); });
 
   const sections = document.querySelectorAll('main section[id]');
   const links = document.querySelectorAll('.desktop-nav a');
@@ -368,10 +434,10 @@ function initInteractions() {
       }
     });
   });
-  $('#motion-toggle').addEventListener('click', () => { state.paused = !state.paused; updateMotionLabel(); });
-  $('#publication-search').addEventListener('input', renderPublications);
-  $('#publication-year').addEventListener('change', renderPublications);
-  $('#publication-topic').addEventListener('change', renderPublications);
+  if ($('#motion-toggle')) $('#motion-toggle').addEventListener('click', () => { state.paused = !state.paused; updateMotionLabel(); });
+  if ($('#publication-search')) $('#publication-search').addEventListener('input', renderPublications);
+  if ($('#publication-year')) $('#publication-year').addEventListener('change', renderPublications);
+  if ($('#publication-topic')) $('#publication-topic').addEventListener('change', renderPublications);
   document.querySelectorAll('.discovery-step').forEach((link, index) => {
     link.addEventListener('click', () => updateStage(stages[index]));
   });
@@ -381,4 +447,4 @@ $('#current-year').textContent = new Date().getFullYear();
 initNavigation();
 initInteractions();
 setLanguage(state.lang);
-loadPublications();
+if ($('#publication-results')) loadPublications();

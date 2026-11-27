@@ -27,12 +27,14 @@ jobs:
       - name: Validate bilingual site and content
         run: |
           node --check app.js
+          node --check history.js
+          node --check gallery.js
           node scripts/validate.mjs
 
       - name: Prepare static site
         run: |
           mkdir -p dist
-          cp index.html styles.css app.js dist/
+          cp ./*.html ./*.css ./*.js dist/
           cp -R assets content dist/
           touch dist/.nojekyll
 

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Conheça a história da eletrônica orgânica e a criação do INEO, do IMMP à rede nacional." />
+    <title>História do INEO | Eletrônica Orgânica</title>
+    <link rel="icon" href="assets/ineo-logo.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="subpages.css" />
+    <script src="app.js" defer></script>
+    <script src="history.js" defer></script>
+  </head>
+  <body data-page="history">
+    <a class="skip-link" href="#main" data-i18n="skip">Pular para o conteúdo</a>
+    <div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
+    <header class="site-header" id="top">
+      <div class="header-inner container">
+        <a class="brand" href="index.html#inicio" aria-label="INEO, início" data-i18n-aria="brandHome"><span class="brand-crop"><img src="assets/ineo-logo.png" alt="INEO, Instituto Nacional de Eletrônica Orgânica e Sustentável" data-i18n-alt="officialLogoAlt" /></span></a>
+        <nav class="desktop-nav" aria-label="Navegação principal" data-i18n-aria="navLabel">
+          <a href="index.html#instituto" data-i18n="navInstitute">O Instituto</a>
+          <a href="index.html#pesquisa" data-i18n="navResearch">Pesquisa</a>
+          <a href="index.html#rede" data-i18n="navNetwork">A Rede</a>
+          <a href="index.html#publicacoes" data-i18n="navPublications">Publicações</a>
+          <a href="index.html#atividades" data-i18n="navActivities">Atividades</a>
+          <a href="historia.html" aria-current="page" data-i18n="navHistory">História</a>
+          <a href="galeria.html" data-i18n="navGallery">Galeria</a>
+        </nav>
+        <div class="header-actions"><div class="language-switch" role="group" aria-label="Idioma / Language"><button type="button" data-lang="pt" class="is-active" aria-pressed="true">PT</button><span aria-hidden="true"></span><button type="button" data-lang="en" aria-pressed="false">EN</button></div><a href="encontro.html" class="header-explore" data-i18n="navAnnual">Encontro INEO Anual</a><button class="menu-toggle" id="menu-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Abrir menu" data-i18n-aria="openMenu"><span></span><span></span><span></span></button></div>
+      </div>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Navegação móvel" data-i18n-aria="mobileNavLabel" hidden>
+        <a href="index.html#inicio" data-i18n="navHome">Início</a><a href="index.html#instituto" data-i18n="navInstitute">O Instituto</a><a href="index.html#pesquisa" data-i18n="navResearch">Pesquisa</a><a href="index.html#rede" data-i18n="navNetwork">A Rede</a><a href="index.html#publicacoes" data-i18n="navPublications">Publicações</a><a href="index.html#atividades" data-i18n="navActivities">Atividades</a><a href="historia.html" aria-current="page" data-i18n="navHistory">História</a><a href="galeria.html" data-i18n="navGallery">Galeria</a><a href="encontro.html" data-i18n="navAnnual">Encontro INEO Anual</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="subpage-hero container" aria-labelledby="story-title">
+        <p class="section-kicker" data-i18n="storyKicker">NOSSA MEMÓRIA CIENTÍFICA</p>
+        <h1 id="story-title" data-i18n-html="storyTitle">Uma história de ciência <em>feita em rede.</em></h1>
+        <p class="subpage-lead" data-i18n="storyLead">Dos primeiros polímeros condutores à criação do INEO: descubra a trajetória que conecta moléculas, pesquisadores e instituições brasileiras.</p>
+        <div class="subpage-hero-links"><a href="#organica" data-i18n="storyNavigationScience">Origens da eletrônica orgânica</a><a href="#trajetoria" data-i18n="storyNavigationInstitute">História do INEO</a></div>
+        <p class="source-caption" data-i18n="storySource">Acervo histórico do INEO, contextualizado para a nova fase do instituto.</p>
+      </section>
+
+      <section id="organica" class="story-section story-section-white" aria-labelledby="organic-heading">
+        <div class="container story-layout">
+          <div class="story-aside"><p class="section-kicker" data-i18n="storyScienceKicker">UMA REVOLUÇÃO NOS MATERIAIS</p><h2 id="organic-heading" data-i18n="storyScienceTitle">Eletrônica Orgânica</h2><span class="story-aside-line" aria-hidden="true"></span><p class="story-aside-detail">1977 <span>→</span> 2000</p></div>
+          <div class="story-article">
+            <div class="story-prose" id="organic-origin"></div>
+            <div class="doping-explainer" id="doping-explainer" data-doped="false">
+              <div class="explainer-head"><span class="mini-kicker" data-i18n="storyDopingCaption">Dopagem e condutividade: uma ilustração conceitual</span><span class="explainer-beacon" aria-hidden="true"></span></div>
+              <svg class="polymer-diagram" viewBox="0 0 600 160" role="img" aria-label="Cadeia polimérica esquemática com cargas ativadas no estado dopado" data-i18n-aria="storyDopingCaption">
+                <g fill="none" stroke="#7ab9d7" stroke-width="7" stroke-linecap="round"><path d="M55 78 L125 42 L195 78 L265 42 L335 78 L405 42 L475 78 L545 42"/></g>
+                <g class="polymer-atoms" fill="#116ac1" stroke="#fff" stroke-width="4"><circle cx="55" cy="78" r="15"/><circle cx="125" cy="42" r="15"/><circle cx="195" cy="78" r="15"/><circle cx="265" cy="42" r="15"/><circle cx="335" cy="78" r="15"/><circle cx="405" cy="42" r="15"/><circle cx="475" cy="78" r="15"/><circle cx="545" cy="42" r="15"/></g>
+                <g class="doping-carriers" fill="#23a768"><circle cx="97" cy="113" r="9"/><circle cx="235" cy="116" r="9"/><circle cx="370" cy="114" r="9"/><circle cx="505" cy="115" r="9"/></g>
+                <path class="charge-flow" d="M48 129 H558" stroke="#23a768" stroke-width="4" stroke-linecap="round" stroke-dasharray="12 18"/>
+              </svg>
+              <div class="doping-controls" role="group" aria-label="Estado de dopagem" data-i18n-aria="storyDopingCaption"><button type="button" data-doping-choice="false" class="is-selected" aria-pressed="true" data-i18n="storyDopingOff">Sem dopagem</button><button type="button" data-doping-choice="true" aria-pressed="false" data-i18n="storyDopingOn">Com dopagem</button></div>
+              <p class="explainer-result" id="doping-description" aria-live="polite">Em sua forma não dopada, o poliacetileno apresenta comportamento muito menos condutor.</p>
+              <p class="explainer-caveat" data-i18n="storyDopingNotice">Esquema educacional, não corresponde a uma medida experimental nem a uma simulação quantitativa.</p>
+            </div>
+            <div class="story-prose" id="organic-devices"></div>
+            <div class="timeline-explainer" aria-labelledby="timeline-heading">
+              <h3 id="timeline-heading" data-i18n="storyTimelineLabel">Explore marcos da eletrônica orgânica</h3>
+              <div class="timeline-tabs" id="timeline-tabs" role="tablist" aria-label="Marcos científicos" data-i18n-aria="storyTimelineLabel"></div>
+              <div class="timeline-detail" id="timeline-detail" role="tabpanel" aria-live="polite"></div>
+            </div>
+            <div class="story-prose" id="organic-fields"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="trajetoria" class="story-section story-section-pale" aria-labelledby="ineo-history-heading">
+        <div class="container story-layout">
+          <div class="story-aside"><p class="section-kicker" data-i18n="storyInstituteKicker">DO IMMP AO INEO</p><h2 id="ineo-history-heading" data-i18n="storyInstituteTitle">INEO: Instituto Nacional de Eletrônica Orgânica</h2><p class="story-aside-summary" data-i18n="storyInstituteLead">Uma rede construída por décadas de pesquisa, ensino, colaboração e articulação nacional.</p></div>
+          <div class="story-article">
+            <div class="archive-notice"><strong data-i18n="storyArchiveBadge">REGISTRO HISTÓRICO</strong><p data-i18n="storyArchiveNote">Os parágrafos e números abaixo reproduzem o relato do site institucional anterior, referente ao período até 2023.</p></div>
+            <div class="story-prose" id="ineo-early"></div>
+            <div class="history-years" aria-hidden="true"><span>1980</span><span>1990</span><span>2001</span><span>2005</span><span>2009</span><span>2014</span><span>2023</span></div>
+            <div class="story-prose" id="ineo-millennium"></div>
+            <figure class="story-photo"><img id="historic-photo" src="" alt="Registro fotográfico de participantes de encontros da rede INEO" loading="lazy" /><figcaption data-i18n="gallerySourceNote">Fonte: carrossel público do site institucional anterior.</figcaption></figure>
+            <div class="story-prose" id="ineo-network"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-future-section container"><div class="story-future-card"><p class="section-kicker" data-i18n="storyArchiveBadge">REGISTRO HISTÓRICO</p><h2 data-i18n="storyFutureTitle">Uma nova etapa: orgânica e sustentável</h2><p data-i18n="storyFutureDesc">A proposta contemplada do novo INEO amplia o horizonte para energia, saúde, agricultura e eletrônica sustentável, unindo sete polos regionais e diferentes competências científicas.</p><div class="story-future-actions"><a href="galeria.html" class="button button-primary" data-i18n="storyGalleryCta">Explore a galeria histórica</a><a href="index.html" class="button button-outline" data-i18n="storyBackHome">Voltar à página inicial</a></div></div></section>
+
+      <section id="referencias" class="references-section container" aria-labelledby="references-heading"><div class="references-heading"><h2 id="references-heading" data-i18n="storyReferences">Referências da história da Eletrônica Orgânica</h2><p data-i18n="storyReferenceNote">Referências preservadas conforme o material histórico fornecido. A normalização bibliográfica ainda será revisada.</p></div><ol class="reference-list" id="reference-list"></ol><a class="source-link" href="https://sites.google.com/unesp.br/ineo2020/in%C3%ADcio/hist%C3%B3ria-do-ineo" target="_blank" rel="noopener noreferrer" data-i18n="footerLegacy">Acervo institucional anterior</a></section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><strong>INEO<span class="footer-dot">.</span></strong><p data-i18n="footerFullName">Instituto Nacional de Eletrônica Orgânica e Sustentável</p></div><div class="footer-links"><strong data-i18n="footerNavigate">Navegue</strong><a href="index.html" data-i18n="navHome">Início</a><a href="index.html#pesquisa" data-i18n="navResearch">Pesquisa</a><a href="index.html#publicacoes" data-i18n="navPublications">Publicações</a></div><div class="footer-links"><strong data-i18n="footerExplore">Descubra</strong><a href="historia.html" data-i18n="navHistory">História</a><a href="galeria.html" data-i18n="navGallery">Galeria</a><a href="encontro.html" data-i18n="navAnnual">Encontro INEO Anual</a></div></div><div class="container footer-bottom"><span>© <span id="current-year"></span> INEO.</span><span data-i18n="footerPrototype">Protótipo de desenvolvimento. Informações institucionais em revisão.</span><a href="#top" data-i18n="backTop">Voltar ao topo</a></div></footer>
+  </body>
+</html>

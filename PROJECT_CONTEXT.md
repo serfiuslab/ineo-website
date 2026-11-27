@@ -90,6 +90,19 @@ The prototype's `content/publications.json` is intentionally empty. Only entries
 
 Run `node --check app.js && node scripts/validate.mjs` before committing content or UI changes.
 
+## Historical pages and photography (November 2026)
+
+Filipe requested that the original content from the previous INEO website's **História do INEO** page be preserved in the renewed portal, along with a top-nav **História** page, a **Galeria** page, and an **Encontro INEO Anual** link awaiting a future Even3 URL. The nav's former "Explore the science" CTA was replaced by a highlighted event link; the science exploration remains accessible from the homepage hero. The official logo file remains unchanged, with CSS crop/scale adjusted to prevent clipping of its subtitle.
+
+- `historia.html` + `history.js`: separate long-form bilingual history page. Includes the user-provided account of organic electronics (conducting polymers, organic photovoltaics, OLEDs, organic transistors and bioelectronics), the development of the Brazilian organic-electronics community, the IMMP and the INEO, and the original 11 cited references. The article is interleaved with a conceptual doping demonstration, an interactive scientific timeline and one photograph from the historical site. These illustrations are educational, not measurements. Historical references are transcribed and require bibliographic checking before scholarly reuse.
+- `galeria.html` + `gallery.js`: six images taken from the public photo carousel on the old INEO Google Site. The interactive, keyboard-accessible photo viewer displays these with neutral archival captions. **Image dates, people and locations have not been independently identified.** The photos currently reference URLs on `sites.google.com`; migrate to locally hosted approved originals when the editorial team supplies them. Do not infer metadata from appearance.
+- `encontro.html`: dedicated event landing page, currently an honest placeholder awaiting **Filipe's forthcoming Even3 event URL**. Do not substitute an old event registration page. The link in the top bar points to this page until the verified current link is received.
+- `subpages.css`: page-specific editorial and gallery styles; shared header and light design remain in `styles.css`.
+
+The historical source contains period-specific counts (over 40 groups, over 90 researchers, around 40 postdocs, 150 graduate students, etc.) and references to activities through 2023. They appear in an explicitly labeled *historical record*, not a current INEO dashboard. When updating this page, retain that distinction. This also applies to the old group's name (*Instituto Nacional de Eletrônica Orgânica*) versus the renewed (*... e Sustentável*).
+
+The GitHub Actions static packaging must include all root `.html`, `.js` and `.css` files, not just the original homepage files. Validate all four pages and bilingual data before publishing.
+
 ## Current limitations / next tasks
 
 This is an **initial prototype**, not a verified public institutional launch. The public GitHub Pages URL was successfully deployed on November 27, 2026. Continue visual/mobile QA after changes; improve interactive scientific depth; confirm the renewed INEO's governing roster, network counts, institutional contacts and final award details; curate network and paper data; and obtain Filipe's design approval before treating the result as final.
