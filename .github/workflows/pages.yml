@@ -46,6 +46,10 @@ jobs:
         with:
           path: dist
 
+      # GitHub's artifact listing may lag behind a completed upload.
+      - name: Allow Pages artifact registration
+        run: sleep 20
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
