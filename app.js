@@ -2,6 +2,9 @@
  * The UI distinguishes curated records from automated OpenAlex researcher output.
  */
 
+// Limit every publication view to the renewed project's documented start date.
+const renewedIneoStartDate = '2025-05-01';
+
 const translations = {
   pt: {
     skip: 'Pular para o conteúdo', navLabel: 'Navegação principal', mobileNavLabel: 'Navegação móvel', openMenu: 'Abrir menu', closeMenu: 'Fechar menu',
@@ -49,13 +52,13 @@ const translations = {
     networkFullList: 'Consultar lista de pesquisadores', networkSelectLabel: 'POLOS DA REDE', networkDetailKicker: 'POLO SELECIONADO',
     networkDetailDesc: 'O polo integra o modelo de articulação proposto para o novo INEO. A composição atualizada de pesquisadores e coordenações será publicada após verificação institucional.',
     publicationsKicker: 'CONHECIMENTO COMPARTILHADO', publicationsTitle: 'A produção científica <em>em um só lugar.</em>',
-    publicationsLead: 'Explore os artigos e revisões dos pesquisadores selecionados, recuperados pelo OpenAlex e organizados por ano. A atribuição de cada trabalho ao INEO requer validação.',
-    catalogTitle: 'Publicações dos pesquisadores', catalogStatus: 'ATUALIZAÇÃO AUTOMÁTICA',
+    publicationsLead: 'Explore artigos e revisões publicados desde 1º de maio de 2025, início previsto da nova fase do INEO, recuperados pelo OpenAlex e organizados por ano. O vínculo de cada trabalho com o projeto requer validação.',
+    catalogTitle: 'Publicações dos pesquisadores', catalogStatus: 'ATUALIZAÇÃO AUTOMÁTICA', catalogPeriod: 'desde 01/05/2025',
     catalogSearchLabel: 'Buscar publicações', catalogPlaceholder: 'Buscar título, autor ou DOI...',
     filterYear: 'Filtrar por ano', filterResearcher: 'Filtrar por pesquisador', catalogAllYears: 'Todos os anos', catalogAllResearchers: 'Todos os pesquisadores',
     catalogEmptyTitle: 'Aguardando a primeira coleta do OpenAlex', catalogEmptyDesc: 'O catálogo será preenchido automaticamente pelo fluxo de publicação do GitHub Pages.',
     catalogNoMatchTitle: 'Nenhuma publicação encontrada', catalogNoMatchDesc: 'Experimente outros termos ou remova os filtros.',
-    catalogMethod: 'Esta é uma coleção automatizada de artigos e revisões dos pesquisadores consultados. A presença de um trabalho não comprova sua vinculação ou financiamento pelo INEO. Metadados e atribuição institucional estão sujeitos a conferência.',
+    catalogMethod: 'O recorte começa em 01/05/2025, data de início prevista na proposta aprovada do novo INEO (CNPq 408449/2024-1). São artigos e revisões dos pesquisadores consultados; a presença de um trabalho não comprova vínculo ou financiamento pelo INEO. Metadados e atribuição institucional requerem conferência.',
     catalogArchive: 'Acessar publicações do acervo anterior', catalogRead: 'Ver publicação', catalogViewOpenAlex: 'Ver no OpenAlex',
     catalogCount: '{shown} de {total} publicações encontradas', catalogUpdated: 'Atualizado em {date} · OpenAlex', catalogPartial: 'Alguns perfis necessitam de conferência',
     catalogMore: 'Carregar mais publicações', catalogAutoBadge: 'METADADOS OPENALEX', catalogCuratedBadge: 'REGISTRO VALIDADO',
@@ -147,13 +150,13 @@ const translations = {
     networkFullList: 'Browse the researcher directory', networkSelectLabel: 'RESEARCH HUBS', networkDetailKicker: 'SELECTED HUB',
     networkDetailDesc: 'This hub is part of the proposed network structure. Updated researcher and leadership rosters will be published after institutional verification.',
     publicationsKicker: 'KNOWLEDGE SHARED', publicationsTitle: 'Scientific output <em>in one place.</em>',
-    publicationsLead: 'Explore articles and reviews by the selected researchers, retrieved from OpenAlex and grouped by year. Attribution of any work to INEO requires verification.',
-    catalogTitle: 'Researcher publications', catalogStatus: 'AUTOMATIC UPDATES',
+    publicationsLead: 'Explore articles and reviews published since May 1, 2025, the planned start of the renewed INEO, retrieved from OpenAlex and grouped by year. Project attribution for each work requires verification.',
+    catalogTitle: 'Researcher publications', catalogStatus: 'AUTOMATIC UPDATES', catalogPeriod: 'since May 1, 2025',
     catalogSearchLabel: 'Search publications', catalogPlaceholder: 'Search title, author or DOI...',
     filterYear: 'Filter by year', filterResearcher: 'Filter by researcher', catalogAllYears: 'All years', catalogAllResearchers: 'All researchers',
     catalogEmptyTitle: 'Waiting for the first OpenAlex sync', catalogEmptyDesc: 'The GitHub Pages publication workflow will populate the catalogue automatically.',
     catalogNoMatchTitle: 'No publications found', catalogNoMatchDesc: 'Try different terms or clear the filters.',
-    catalogMethod: 'This is an automated collection of articles and reviews by the queried researchers. A work’s presence does not establish an INEO project connection or funding. Bibliographic metadata and institutional attribution remain subject to review.',
+    catalogMethod: 'The catalogue starts on May 1, 2025, the planned project start stated in the approved renewed INEO proposal (CNPq 408449/2024-1). These are articles and reviews by the queried researchers; inclusion does not establish an INEO project connection or funding. Metadata and attribution require review.',
     catalogArchive: 'Browse the previous publication archive', catalogRead: 'View publication', catalogViewOpenAlex: 'View on OpenAlex',
     catalogCount: '{shown} of {total} publications found', catalogUpdated: 'Updated {date} · OpenAlex', catalogPartial: 'Some researcher profiles need review',
     catalogMore: 'Load more publications', catalogAutoBadge: 'OPENALEX METADATA', catalogCuratedBadge: 'VERIFIED RECORD',
@@ -431,6 +434,12 @@ function renderPublications() {
 }
 
 async function loadPublications() {
+  const inRenewedPeriod = item => {
+    const year = Number(item.year);
+    if (!Number.isInteger(year)) return false;
+    const date = /^\d{4}-\d{2}-\d{2}$/.test(item.date ?? '') ? item.date : `${year}-01-01`;
+    return date >= renewedIneoStartDate;
+  };
   const readJson = async file => {
     const response = await fetch(file, { cache: 'no-cache' });
     if (!response.ok) throw new Error(`HTTP ${response.status} ${file}`);
@@ -440,10 +449,10 @@ async function loadPublications() {
     readJson('content/publications.json'), readJson('content/openalex.json')
   ]);
   const curated = curatedResult.status === 'fulfilled' && Array.isArray(curatedResult.value.publications)
-    ? curatedResult.value.publications.filter(item => item.verified === true && typeof item.title === 'string' && Number.isFinite(Number(item.year))) : [];
+    ? curatedResult.value.publications.filter(item => item.verified === true && typeof item.title === 'string' && inRenewedPeriod(item)) : [];
   const openalex = openalexResult.status === 'fulfilled' ? openalexResult.value : {};
   const candidates = Array.isArray(openalex.publications)
-    ? openalex.publications.filter(item => item.source === 'openalex' && item.verified === false && typeof item.title === 'string' && Number.isFinite(Number(item.year))) : [];
+    ? openalex.publications.filter(item => item.source === 'openalex' && item.verified === false && typeof item.title === 'string' && inRenewedPeriod(item)) : [];
   if (openalexResult.status === 'rejected') console.warn('OpenAlex catalogue unavailable:', openalexResult.reason);
   state.researchers = Array.isArray(openalex.researchers) ? openalex.researchers : [];
   state.syncGeneratedAt = openalex.generatedAt ?? null;

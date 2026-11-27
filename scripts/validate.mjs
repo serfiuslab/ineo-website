@@ -35,9 +35,12 @@ assert.equal(researchers.schemaVersion, 1, 'Unknown researcher registry version'
 assert.equal(researchers.researchers.length, 16, 'Expected 16 initial ORCID search profiles');
 assert.equal(new Set(researchers.researchers.map(person => person.orcid)).size, 16, 'Repeated researcher ORCIDs');
 assert.equal(openalex.schemaVersion, 1, 'Unknown OpenAlex cache schema version');
+assert.equal(openalex.periodStart, '2025-05-01', 'Renewed INEO project cutoff must be documented');
 assert.ok(Array.isArray(openalex.publications), 'OpenAlex cache must contain a publications array');
 assert.ok(html.includes('id="publication-researcher"'), 'Researcher filter is missing');
 assert.ok(html.includes('id="publication-load-more"'), 'Publication pagination is missing');
+assert.ok(html.includes('data-i18n="catalogPeriod"'), 'Catalogue date range must be visible');
+assert.ok(js.includes("renewedIneoStartDate = '2025-05-01'"), 'Browser must enforce the project-period cutoff');
 
 const match = js.match(/const translations = ([\s\S]+?);\s+const stages =/);
 assert.ok(match, 'Cannot locate translations');

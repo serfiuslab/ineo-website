@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { collectOpenAlex, formatWork, isValidOrcid, validateResearchers } from './sync-openalex.mjs';
+import { collectOpenAlex, formatWork, isValidOrcid, RENEWED_INEO_START_DATE, validateResearchers } from './sync-openalex.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const registry = JSON.parse(fs.readFileSync(path.join(root, 'content/researchers.json'), 'utf8'));
@@ -24,6 +24,11 @@ const work = (number, year = 2026) => ({
 });
 assert.equal(formatWork({ ...work(1), type: 'preprint' }, one), null);
 assert.equal(formatWork(work(1), one).doi, '10.1234/STUDY-1');
+assert.equal(RENEWED_INEO_START_DATE, '2025-05-01');
+assert.equal(formatWork({ ...work(3, 2025), publication_date: '2025-04-30' }, one), null, 'Before project start');
+assert.ok(formatWork({ ...work(3, 2025), publication_date: '2025-05-01' }, one), 'Project start is inclusive');
+assert.equal(formatWork({ ...work(3, 2025), publication_date: null }, one), null, 'Unknown date within 2025 is not enough');
+assert.equal(formatWork(work(3, 2024), one), null, 'Older works are excluded even when returned by API');
 
 let retried = false;
 let requestedSecondPage = false;
@@ -39,6 +44,7 @@ const fetchImpl = async url => {
     return success({ id: `https://openalex.org/A${target.pathname.endsWith(one.orcid) ? 1 : 2}`, display_name: 'Test Author' });
   }
   const researcher = target.searchParams.get('filter')?.match(/orcid:([^,]+)/)?.[1];
+  assert.ok(target.searchParams.get('filter')?.includes(`from_publication_date:${RENEWED_INEO_START_DATE}`), 'Date cutoff must be applied at the API');
   const page = Number(target.searchParams.get('page'));
   if (researcher === one.orcid) {
     if (page === 2) requestedSecondPage = true;
@@ -47,7 +53,7 @@ const fetchImpl = async url => {
       results: page === 1 ? Array.from({ length: 100 }, (_, i) => work(i + 1)) : [work(101, 2025)]
     });
   }
-  if (researcher === two.orcid) return success({ meta: { count: 2 }, results: [work(1), work(102, 2024)] });
+  if (researcher === two.orcid) return success({ meta: { count: 3 }, results: [work(1), work(102, 2024), { ...work(103, 2025), publication_date: '2025-04-30' }] });
   throw new Error(`Unexpected mock URL: ${slug}`);
 };
 
@@ -57,11 +63,13 @@ const result = await collectOpenAlex([one, two], {
 assert.ok(retried, 'HTTP 429 recovery was not exercised');
 assert.ok(requestedSecondPage, 'Basic page-based pagination was not exercised');
 assert.equal(result.researchers.length, 2);
-assert.equal(result.publications.length, 102, 'Duplicate DOI should appear once');
+assert.equal(result.publications.length, 101, 'Duplicate DOI and pre-start works must be excluded');
 assert.equal(result.publications[0].year, 2026);
-assert.equal(result.publications.at(-1).year, 2024);
+assert.equal(result.publications.at(-1).year, 2025);
 assert.deepEqual(result.publications.find(item => item.doi === '10.1234/STUDY-1').matchedResearchers, [one.orcid, two.orcid]);
 assert.equal(result.generatedAt, '2026-11-27T12:00:00.000Z');
+assert.equal(result.periodStart, '2025-05-01');
+assert.ok(result.publications.every(item => item.date >= RENEWED_INEO_START_DATE));
 assert.ok(result.publications.every(item => item.source === 'openalex' && item.verified === false));
 
-console.log(`OpenAlex sync tests passed: ${registry.researchers.length} valid ORCIDs, retries, pagination and DOI deduplication.`);
+console.log(`OpenAlex sync tests passed: ${registry.researchers.length} valid ORCIDs, date cutoff, retries, pagination and DOI deduplication.`);

@@ -8,7 +8,7 @@ Prototype of the bilingual portal for the **Instituto Nacional de Eletrônica Or
 - **Science starts on the homepage:** three interactive scientific explanations, with a motion control and support for reduced-motion preferences.
 - **Bilingual by design:** Portuguese and English share the same content structure and URL. The chosen language is saved locally.
 - **Renewed research programme:** four strategic application areas (energy, health, agriculture and sustainable electronics), cross-cutting modelling/AI, seven geographic hubs and an external link to the earlier archive.
-- **OpenAlex publication discovery:** a daily refreshed catalogue of articles and reviews by an initial, user-supplied 16-researcher ORCID cohort; automated candidates are clearly distinct from verified INEO project output.
+- **OpenAlex publication discovery:** a daily refreshed catalogue of articles and reviews published **on or after May 1, 2025** by an initial, user-supplied 16-researcher ORCID cohort; automated candidates are clearly distinct from verified INEO project output.
 - **Easy team maintenance:** no frameworks, package installation, external backend or build step required for local development.
 - **Preserved institutional memory:** a bilingual history page with archival text, interactive explanations and references, plus a five-photo locally hosted gallery from the previous site.
 - **Annual meeting:** top navigation and a dedicated landing page linking to the 2026 Workshop proceedings on Even3; this is not a registration link.
@@ -54,7 +54,9 @@ OpenAlex supports basic page-based pagination up to 10,000 results. The sync ref
 
 The build can make occasional anonymous API requests without a key. **For a sustained production workflow, create a free OpenAlex key and store it in the GitHub repository as an Actions secret named `OPENALEX_API_KEY`** (Settings → Secrets and variables → Actions → New repository secret). The key is only injected into the GitHub Actions process, never embedded in HTML, browser JavaScript or published JSON. See the [current OpenAlex authentication guide](https://help.openalex.org/api/authentication/).
 
-The visible catalogue groups results by publication year, descending, with title search, year and researcher filters, and a Load More control. Every automated card is labeled as OpenAlex metadata, not an independently verified INEO result. A paper by a selected researcher is **not automatically INEO-funded** or a result of the renewed institute. OpenAlex metadata can contain errors and must be reviewed before being included in institutional reports.
+The visible catalogue groups results by publication year, descending, with title search, year and researcher filters, and a Load More control. **The date cutoff is May 1, 2025**, the planned start stated in the approved INEO proposal under CNPq 408449/2024-1 (submitted December 7, 2024). This is the planned project start, not an independently confirmed grant-contract date. The sync applies `from_publication_date:2025-05-01` to each OpenAlex works request and independently rejects older returned records. The browser also rejects out-of-period records as a precaution. An article published in 2025 without an exact publication date is excluded rather than assumed to be after May 1. To change the cutoff later, update the date constants in `scripts/sync-openalex.mjs` and `app.js`, the user-facing PT/EN copy, the placeholder JSON and the tests.
+
+Every automated card is labeled as OpenAlex metadata, not an independently verified INEO result. A paper by a selected researcher is **not automatically INEO-funded** or a result of the renewed institute. OpenAlex metadata can contain errors and must be reviewed before being included in institutional reports. The historical research and publications remain accessible through the previous INEO archive.
 
 The repository deliberately keeps the source `content/openalex.json` as an empty preview placeholder. The actual refreshed dataset is generated into `dist/` for each successful deployment, avoiding daily auto-commits or mixing unreviewed records into curated source material.
 
@@ -87,7 +89,7 @@ Edit `content/publications.json`. Each verified record follows this structure:
 }
 ```
 
-The example above is documentation only: the curated catalogue starts empty. A manually curated record is rendered only when `verified` is `true`, the title is present and the year is valid. These records remain separate from the automated OpenAlex candidates and take precedence when the same DOI appears in both sources.
+The example above is documentation only: the curated catalogue starts empty. A manually curated record is rendered only when `verified` is `true`, the title is present and its publication date falls within the renewed project period. For records from 2025, editors must include `"date": "2025-MM-DD"` to establish that publication occurred on or after May 1; for 2026 onward the year suffices. These records remain separate from the automated OpenAlex candidates and take precedence when the same DOI appears in both sources.
 
 Human review is required to determine a paper's relationship to INEO and any funding acknowledgment. The automated OpenAlex feed is displayed in an explicitly unverified researcher-output section, not entered into this reviewed register.
 

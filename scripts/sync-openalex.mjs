@@ -9,6 +9,8 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(import.meta.dirname, '..');
 const apiRoot = 'https://api.openalex.org';
 const allowedTypes = new Set(['article', 'review']);
+// The renewed INEO proposal (CNPq 408449/2024-1) states a project start of May 1, 2025.
+export const RENEWED_INEO_START_DATE = '2025-05-01';
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 export function isValidOrcid(value) {
@@ -68,6 +70,9 @@ export function formatWork(work, researcher) {
   const title = String(work.title || work.display_name || '').trim();
   const year = Number(work.publication_year);
   if (!title || !Number.isInteger(year) || year < 1900 || year > 2100 || !allowedTypes.has(work.type)) return null;
+  // For the first project year, a missing exact publication date cannot establish eligibility.
+  const date = /^\d{4}-\d{2}-\d{2}$/.test(work.publication_date ?? '') ? work.publication_date : `${year}-01-01`;
+  if (date < RENEWED_INEO_START_DATE) return null;
   const doi = String(work.doi ?? '').replace(/^https?:\/\/(?:dx\.)?doi\.org\//i, '').trim();
   const authors = (work.authorships ?? []).map(item => item.author?.display_name).filter(Boolean);
   const openalexId = String(work.id ?? '');
@@ -76,7 +81,7 @@ export function formatWork(work, researcher) {
     openalexId,
     title,
     year,
-    date: /^\d{4}-\d{2}-\d{2}$/.test(work.publication_date ?? '') ? work.publication_date : `${year}-01-01`,
+    date,
     authors,
     journal: work.primary_location?.source?.display_name ?? '',
     topic: work.primary_topic?.display_name ?? '',
@@ -114,7 +119,7 @@ export async function collectOpenAlex(researchers, { fetchImpl = fetch, apiKey =
     while ((page - 1) * 100 < expected) {
       if (page > 100) throw new Error(`OpenAlex basic pagination limit reached for ${researcher.orcid}`);
       const result = await requestJson(apiUrl('/works', {
-        filter: `authorships.author.orcid:${researcher.orcid},type:article|review`,
+        filter: `authorships.author.orcid:${researcher.orcid},type:article|review,from_publication_date:${RENEWED_INEO_START_DATE}`,
         sort: 'publication_date:desc',
         per_page: 100,
         page,
@@ -150,7 +155,8 @@ export async function collectOpenAlex(researchers, { fetchImpl = fetch, apiKey =
     schemaVersion: 1,
     source: 'OpenAlex',
     generatedAt: now.toISOString(),
-    selection: 'Articles and reviews by the supplied ORCID search cohort; INEO project attribution not verified.',
+    periodStart: RENEWED_INEO_START_DATE,
+    selection: 'Articles and reviews published since the renewed INEO project start (2025-05-01) by the supplied ORCID search cohort; project attribution not verified.',
     researchers: resolved,
     unresolved,
     publications
