@@ -32,9 +32,11 @@ jobs:
           node --check app.js
           node --check history.js
           node --check gallery.js
+          node --check laboratorio.js
           node --check scripts/sync-openalex.mjs
           node scripts/validate.mjs
           node scripts/test-openalex.mjs
+          node scripts/test-laboratorio.mjs
 
       - name: Prepare static site
         run: |

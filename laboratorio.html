@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Laboratório Virtual do INEO: investigue OLEDs, células solares orgânicas e biossensores em simulações interativas bilíngues." />
+    <title>Laboratório Virtual | INEO</title>
+    <link rel="icon" href="assets/ineo-logo.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="laboratorio.css" />
+    <script src="app.js?v=20261128-virtual-lab" defer></script>
+    <script src="laboratorio.js?v=20261128-virtual-lab" defer></script>
+  </head>
+  <body data-page="lab">
+    <a class="skip-link" href="#main" data-i18n="skip">Pular para o conteúdo</a>
+    <div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
+    <header class="site-header" id="top">
+      <div class="header-inner container">
+        <a class="brand" href="index.html#inicio" aria-label="INEO, início" data-i18n-aria="brandHome"><span class="brand-crop"><img src="assets/ineo-logo.png" alt="INEO, Instituto Nacional de Eletrônica Orgânica e Sustentável" data-i18n-alt="officialLogoAlt" /></span></a>
+        <nav class="desktop-nav" aria-label="Navegação principal" data-i18n-aria="navLabel">
+          <a href="index.html#instituto" data-i18n="navInstitute">O Instituto</a><a href="index.html#pesquisa" class="active" data-i18n="navResearch">Pesquisa</a><a href="index.html#rede" data-i18n="navNetwork">A Rede</a><a href="index.html#publicacoes" data-i18n="navPublications">Publicações</a><a href="index.html#atividades" data-i18n="navActivities">Atividades</a><a href="historia.html" data-i18n="navHistory">História</a><a href="galeria.html" data-i18n="navGallery">Galeria</a>
+        </nav>
+        <div class="header-actions"><div class="language-switch" role="group" aria-label="Idioma / Language"><button type="button" data-lang="pt" class="is-active" aria-pressed="true">PT</button><span aria-hidden="true"></span><button type="button" data-lang="en" aria-pressed="false">EN</button></div><a href="encontro.html" class="header-explore" data-i18n="navAnnual">Encontro INEO Anual</a><button class="menu-toggle" id="menu-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Abrir menu" data-i18n-aria="openMenu"><span></span><span></span><span></span></button></div>
+      </div>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Navegação móvel" data-i18n-aria="mobileNavLabel" hidden><a href="index.html#inicio" data-i18n="navHome">Início</a><a href="index.html#instituto" data-i18n="navInstitute">O Instituto</a><a href="index.html#pesquisa" data-i18n="navResearch">Pesquisa</a><a href="laboratorio.html" aria-current="page" data-i18n="navVirtualLab">Laboratório Virtual</a><a href="index.html#rede" data-i18n="navNetwork">A Rede</a><a href="index.html#publicacoes" data-i18n="navPublications">Publicações</a><a href="index.html#atividades" data-i18n="navActivities">Atividades</a><a href="historia.html" data-i18n="navHistory">História</a><a href="galeria.html" data-i18n="navGallery">Galeria</a><a href="encontro.html" data-i18n="navAnnual">Encontro INEO Anual</a></nav>
+    </header>
+
+    <main id="main">
+      <section class="lab-hero container" aria-labelledby="lab-heading">
+        <div class="lab-hero-copy">
+          <p class="section-kicker" data-lab="eyebrow">INEO · LABORATÓRIO VIRTUAL</p>
+          <h1 id="lab-heading" data-lab-html="heroTitle">A ciência fica mais clara <em>quando você experimenta.</em></h1>
+          <p class="lab-lead" data-lab="heroLead">Acenda um OLED, investigue uma célula solar e observe como um biossensor responde. Mude os parâmetros, faça previsões e descubra a física por trás de cada fenômeno.</p>
+          <div class="lab-hero-actions"><a href="#experimentos" class="button button-primary" data-lab="start">Começar a investigar</a><a href="index.html#pesquisa" class="button button-outline" data-lab="backResearch">Conhecer a pesquisa do INEO</a></div>
+          <p class="lab-hero-note" data-lab="heroNote">Experiências educativas e qualitativas. Nenhum resultado é uma medição ou diagnóstico real.</p>
+          <button id="lab-motion" class="lab-motion-toggle" type="button" aria-pressed="false" data-lab="pauseMotion">Pausar animações</button>
+        </div>
+        <div class="lab-hero-art" aria-hidden="true"><div class="lab-hero-grid"></div><div class="lab-orbit orbit-one"></div><div class="lab-orbit orbit-two"></div><div class="lab-core">INEO<span>LAB</span></div><div class="lab-art-node node-one">hν</div><div class="lab-art-node node-two">e⁻</div><div class="lab-art-node node-three">+</div><span class="lab-art-caption" data-lab="artCaption">MOLÉCULAS · DISPOSITIVOS · IMPACTO</span></div>
+      </section>
+
+      <section id="experimentos" class="lab-directory container" aria-labelledby="lab-directory-heading">
+        <div class="lab-section-intro"><div><p class="section-kicker" data-lab="chooseLabel">ESCOLHA SUA INVESTIGAÇÃO</p><h2 id="lab-directory-heading" data-lab="chooseTitle">Três fenômenos. Muitas perguntas.</h2></div><p data-lab="chooseDescription">Cada experimento possui controles, uma pergunta para testar e uma explicação para aprofundar.</p></div>
+        <div class="lab-directory-cards">
+          <a href="#oled" class="lab-directory-card"><span class="lab-card-symbol light-symbol" aria-hidden="true">✳</span><span class="lab-directory-index">01 · OLED</span><strong data-lab="oledShort">Produzir luz</strong><span data-lab="openExperiment">Abrir experimento</span></a>
+          <a href="#solar" class="lab-directory-card"><span class="lab-card-symbol solar-symbol" aria-hidden="true">☀</span><span class="lab-directory-index">02 · OPV</span><strong data-lab="solarShort">Captar luz</strong><span data-lab="openExperiment">Abrir experimento</span></a>
+          <a href="#biossensor" class="lab-directory-card"><span class="lab-card-symbol sensor-symbol" aria-hidden="true">◉</span><span class="lab-directory-index">03 · SENSOR</span><strong data-lab="sensorShort">Detectar moléculas</strong><span data-lab="openExperiment">Abrir experimento</span></a>
+        </div>
+      </section>
+
+      <section id="oled" class="experiment-section container" aria-labelledby="oled-title">
+        <div class="experiment-heading"><div><span class="experiment-index" data-lab="oledIndex">EXPERIMENTO 01 · OLED</span><h2 id="oled-title" data-lab="oledTitle">Como eletricidade pode produzir luz?</h2><p data-lab="oledIntro">Em um OLED, cargas elétricas injetadas nas camadas orgânicas podem se recombinar e formar estados excitados que emitem luz.</p></div><span class="experiment-chip" data-lab="optoelectronics">OPTOELETRÔNICA</span></div>
+        <div class="experiment-workbench">
+          <div class="experiment-view">
+            <div class="experiment-view-top"><span data-lab="deviceView">VISUALIZAÇÃO DO DISPOSITIVO</span><span class="illustration-tag" data-lab="schematic">ESQUEMA CONCEITUAL</span></div>
+            <svg class="experiment-svg oled-svg" viewBox="0 0 560 320" role="img" aria-labelledby="oled-visual-title oled-visual-desc">
+              <title id="oled-visual-title" data-lab="oledVisualTitle">OLED de camadas orgânicas entre dois eletrodos</title><desc id="oled-visual-desc" data-lab="oledVisualDesc">Ilustração de cargas opostas convergindo para uma camada emissora e fótons emergindo do dispositivo quando a tensão aumenta.</desc>
+              <defs><linearGradient id="oled-layer-gradient" x1="0" x2="1"><stop stop-color="#d6f5e4"/><stop offset="1" stop-color="#93e0bd"/></linearGradient><filter id="oled-soft-glow"><feGaussianBlur stdDeviation="12"/></filter></defs>
+              <g class="oled-photons" id="oled-photons"><circle cx="280" cy="82" r="76" id="oled-glow" fill="#1e8dd9" opacity=".3" filter="url(#oled-soft-glow)"/><path d="M280 63 V14 M250 65 L228 23 M311 65 L334 23 M230 87 L180 72 M332 87 L380 72" fill="none" stroke="var(--emission, #1688ee)" stroke-width="5" stroke-linecap="round"/><circle cx="280" cy="78" r="19" fill="var(--emission, #1688ee)" opacity=".8"/></g>
+              <g><rect x="88" y="173" width="384" height="30" rx="6" fill="#dce7ee" stroke="#bed0dc"/><rect x="88" y="205" width="384" height="49" rx="5" fill="url(#oled-layer-gradient)"/><rect x="88" y="256" width="384" height="29" rx="6" fill="#bddaf1" stroke="#7bb2d9"/><rect x="88" y="231" width="384" height="15" rx="4" id="oled-active-layer" fill="var(--emission, #1688ee)" opacity=".5"/><text x="280" y="194" text-anchor="middle" class="experiment-svg-label" data-lab="upperContact">ELETRODO SUPERIOR</text><text x="280" y="223" text-anchor="middle" class="experiment-svg-label" data-lab="organicLayer">MATERIAL ORGÂNICO</text><text x="280" y="275" text-anchor="middle" class="experiment-svg-label" data-lab="lowerContact">ELETRODO INFERIOR</text></g>
+              <g class="oled-carriers" id="oled-carriers"><circle class="carrier-electron" cx="190" cy="176" r="12" fill="#087cde"/><text class="carrier-electron" x="190" y="180" text-anchor="middle" fill="white" font-size="15" font-weight="800">−</text><circle class="carrier-hole" cx="363" cy="279" r="12" fill="#f59e3c"/><text class="carrier-hole" x="363" y="283" text-anchor="middle" fill="white" font-size="15" font-weight="800">+</text></g>
+              <g stroke="#aac6d9" fill="none" stroke-width="3"><path d="M88 188 H61 V270 H88"/><path d="M472 188 H499 V270 H472"/></g><text x="280" y="306" text-anchor="middle" class="experiment-svg-note" data-lab="notToScale">Ilustração simplificada · sem escala</text>
+            </svg>
+            <div class="experiment-indicator"><div><small data-lab="emissionLabel">Emissão luminosa ilustrativa</small><strong id="oled-status" aria-live="polite">Moderada</strong></div><div class="level-track" role="img" aria-label="Intensidade luminosa relativa" data-lab-aria="emissionMeterAria"><span id="oled-meter"></span></div></div>
+          </div>
+          <div class="experiment-controls">
+            <span class="control-kicker" data-lab="controlPanel">PAINEL DE CONTROLE</span><label class="lab-control-label" for="oled-voltage"><span data-lab="voltage">Tensão aplicada</span><output id="oled-voltage-output" for="oled-voltage">3,0 V</output></label><input type="range" id="oled-voltage" min="0" max="5" step="0.1" value="3" /><div class="range-labels"><span>0 V</span><span>5 V</span></div>
+            <label class="lab-control-label" for="oled-color" data-lab="emissionColor">Cor da emissão ilustrativa</label><select id="oled-color"><option value="blue" data-lab="blue">Azul</option><option value="green" data-lab="green">Verde</option><option value="red" data-lab="red">Vermelho</option></select>
+            <div class="observation-box"><small data-lab="observation">O QUE VOCÊ OBSERVA</small><p id="oled-observation" aria-live="polite"></p></div>
+            <button class="lab-reset" type="button" data-reset="oled" data-lab="reset">Reiniciar experimento</button>
+          </div>
+        </div>
+        <div class="investigation-strip"><div><small data-lab="challenge">DESAFIO PARA INVESTIGAR</small><p data-lab="oledChallenge">A luz aparece mesmo quando a tensão está muito baixa? Formule uma hipótese e teste.</p></div><details><summary data-lab="understand">Entenda o fenômeno</summary><p data-lab="oledExplanation">Em OLEDs, a emissão depende da injeção e do transporte de elétrons e lacunas, da formação de estados excitados e das perdas não radiativas. A tensão usada aqui controla apenas uma resposta luminosa ilustrativa: curvas reais e limiares variam conforme o dispositivo.</p></details></div>
+      </section>
+
+      <section id="solar" class="experiment-section container" aria-labelledby="solar-title">
+        <div class="experiment-heading"><div><span class="experiment-index" data-lab="solarIndex">EXPERIMENTO 02 · OPV</span><h2 id="solar-title" data-lab="solarTitle">Como transformar luz em eletricidade?</h2><p data-lab="solarIntro">Uma célula solar orgânica absorve luz e pode converter parte da energia recebida em cargas elétricas coletáveis nos contatos.</p></div><span class="experiment-chip" data-lab="solarEnergy">ENERGIA SOLAR</span></div>
+        <div class="experiment-workbench">
+          <div class="experiment-view"><div class="experiment-view-top"><span data-lab="deviceView">VISUALIZAÇÃO DO DISPOSITIVO</span><span class="illustration-tag" data-lab="schematic">ESQUEMA CONCEITUAL</span></div>
+            <svg class="experiment-svg solar-svg" viewBox="0 0 560 320" role="img" aria-labelledby="solar-visual-title solar-visual-desc">
+              <title id="solar-visual-title" data-lab="solarVisualTitle">Célula solar orgânica iluminada</title><desc id="solar-visual-desc" data-lab="solarVisualDesc">Fótons atingem o material orgânico, geram excitações e cargas são separadas e transportadas até os eletrodos de coleta.</desc>
+              <g class="solar-beam" id="solar-beam"><circle cx="280" cy="43" r="25" fill="#f8c851" stroke="#eba62c" stroke-width="4"/><g stroke="#e9af37" stroke-width="4" stroke-linecap="round"><path d="M280 5 V11 M280 75 V84 M241 43 H232 M320 43 H330 M253 17 L247 10 M307 68 L314 75 M306 17 L313 10 M253 68 L246 75"/></g><path d="M224 88 L188 170 M280 91 V170 M337 88 L373 170" fill="none" stroke="#e6bd5c" stroke-width="5" stroke-dasharray="10 12" stroke-linecap="round"/></g>
+              <g><rect x="78" y="173" width="404" height="27" rx="5" fill="#c3e2f5"/><rect x="78" y="201" width="404" height="61" rx="6" fill="#a8dfbf"/><rect x="78" y="264" width="404" height="26" rx="5" fill="#d6e2e9" stroke="#b9cfdc"/><text x="280" y="190" text-anchor="middle" class="experiment-svg-label" data-lab="transparentContact">CONTATO TRANSPARENTE</text><text x="280" y="236" text-anchor="middle" class="experiment-svg-label" data-lab="photoactiveLayer">CAMADA FOTOATIVA</text><text x="280" y="281" text-anchor="middle" class="experiment-svg-label" data-lab="collectingContact">CONTATO COLETOR</text></g>
+              <g class="solar-charges" id="solar-charges"><circle cx="242" cy="228" r="13" fill="#087cde"/><text x="242" y="233" text-anchor="middle" fill="white" font-weight="800">−</text><circle cx="318" cy="228" r="13" fill="#f59e3c"/><text x="318" y="233" text-anchor="middle" fill="white" font-weight="800">+</text><path d="M235 222 L150 182 M325 222 L410 282" stroke="#087cde" stroke-width="3" stroke-dasharray="8 8" fill="none"/></g>
+              <text x="280" y="309" text-anchor="middle" class="experiment-svg-note" data-lab="notToScale">Ilustração simplificada · sem escala</text>
+            </svg>
+            <div class="experiment-indicator"><div><small data-lab="collectionLabel">Sinal coletado ilustrativo</small><strong id="solar-status" aria-live="polite">Moderado</strong></div><div class="level-track" role="img" aria-label="Sinal relativo coletado" data-lab-aria="collectionMeterAria"><span id="solar-meter"></span></div></div>
+          </div>
+          <div class="experiment-controls"><span class="control-kicker" data-lab="controlPanel">PAINEL DE CONTROLE</span>
+            <label class="lab-control-label" for="solar-light"><span data-lab="illumination">Iluminação relativa</span><output id="solar-light-output" for="solar-light">70%</output></label><input type="range" id="solar-light" min="0" max="100" step="5" value="70"/><div class="range-labels"><span>0%</span><span>100%</span></div>
+            <label class="lab-control-label" for="solar-collection"><span data-lab="collection">Coleta de cargas ilustrativa</span><output id="solar-collection-output" for="solar-collection">75%</output></label><input type="range" id="solar-collection" min="0" max="100" step="5" value="75"/><div class="range-labels"><span>0%</span><span>100%</span></div>
+            <div class="observation-box"><small data-lab="observation">O QUE VOCÊ OBSERVA</small><p id="solar-observation" aria-live="polite"></p></div><button class="lab-reset" type="button" data-reset="solar" data-lab="reset">Reiniciar experimento</button>
+          </div>
+        </div>
+        <div class="investigation-strip"><div><small data-lab="challenge">DESAFIO PARA INVESTIGAR</small><p data-lab="solarChallenge">E se houver muita luz, mas poucos portadores de carga chegarem aos eletrodos? Experimente os dois controles.</p></div><details><summary data-lab="understand">Entenda o fenômeno</summary><p data-lab="solarExplanation">Depois da absorção de fótons, a separação dos estados excitados, o transporte e a coleta de cargas competem com processos de perda. Este modelo mostra qualitativamente duas dependências, sem calcular eficiência de conversão de potência, corrente real ou resposta espectral.</p></details></div>
+      </section>
+
+      <section id="biossensor" class="experiment-section container" aria-labelledby="sensor-title">
+        <div class="experiment-heading"><div><span class="experiment-index" data-lab="sensorIndex">EXPERIMENTO 03 · BIOSENSOR</span><h2 id="sensor-title" data-lab="sensorTitle">Como detectar o que não conseguimos ver?</h2><p data-lab="sensorIntro">Um biossensor reúne um elemento de reconhecimento e um transdutor. Quando há interação com uma substância de interesse, seu sinal pode mudar.</p></div><span class="experiment-chip" data-lab="healthEnvironment">SAÚDE E AMBIENTE</span></div>
+        <div class="experiment-workbench">
+          <div class="experiment-view"><div class="experiment-view-top"><span data-lab="surfaceView">SUPERFÍCIE DO SENSOR</span><span class="illustration-tag" data-lab="schematic">ESQUEMA CONCEITUAL</span></div>
+            <svg class="experiment-svg sensor-svg" viewBox="0 0 560 320" role="img" aria-labelledby="sensor-visual-title sensor-visual-desc"><title id="sensor-visual-title" data-lab="sensorVisualTitle">Alvos moleculares sobre a superfície de um biossensor</title><desc id="sensor-visual-desc" data-lab="sensorVisualDesc">Partículas da amostra aparecem na solução, algumas se ligam aos receptores quando há reconhecimento compatível e uma barra ilustra a resposta do sensor.</desc>
+              <rect x="72" y="51" width="416" height="211" rx="17" fill="#ecf9ff" stroke="#c4e5f4"/><path d="M73 101 Q145 87 211 101 T349 101 T488 101 V246 H73Z" fill="#d9f1fa" opacity=".7"/><rect x="84" y="248" width="392" height="26" rx="6" fill="#afd9be"/><rect x="84" y="275" width="392" height="13" rx="4" fill="#0b66b4"/>
+              <g class="sensor-receptors" stroke="#0f9b6a" stroke-width="5" fill="none" stroke-linecap="round"><path d="M135 249 V223 L122 209 M135 223 L149 209"/><path d="M216 249 V223 L203 209 M216 223 L230 209"/><path d="M297 249 V223 L284 209 M297 223 L311 209"/><path d="M378 249 V223 L365 209 M378 223 L392 209"/><path d="M449 249 V223 L436 209 M449 223 L463 209"/></g>
+              <g id="sensor-targets" fill="#1684d2" stroke="#ffffff" stroke-width="3"><circle cx="114" cy="104" r="10"/><circle cx="187" cy="79" r="10"/><circle cx="265" cy="128" r="10"/><circle cx="343" cy="83" r="10"/><circle cx="424" cy="125" r="10"/><circle cx="155" cy="167" r="10"/><circle cx="227" cy="155" r="10"/><circle cx="314" cy="176" r="10"/><circle cx="394" cy="163" r="10"/><circle cx="135" cy="198" r="10"/><circle cx="297" cy="197" r="10"/><circle cx="448" cy="194" r="10"/></g><g id="sensor-binding" fill="#2fb779" stroke="#fff" stroke-width="2"><circle cx="135" cy="202" r="10"/><circle cx="216" cy="202" r="10"/><circle cx="297" cy="202" r="10"/><circle cx="378" cy="202" r="10"/><circle cx="449" cy="202" r="10"/></g>
+              <text x="280" y="309" text-anchor="middle" class="experiment-svg-note" data-lab="notToScale">Ilustração simplificada · sem escala</text></svg>
+            <div class="sensor-plot" role="img" aria-label="Curva ilustrativa da resposta do sensor em função da concentração" data-lab-aria="sensorGraphAria"><div class="sensor-plot-title" data-lab="responseCurve">RESPOSTA RELATIVA × CONCENTRAÇÃO</div><svg viewBox="0 0 360 142" aria-hidden="true"><path d="M33 12 V118 H339" stroke="#9bb6c6" stroke-width="1.5" fill="none"/><path id="sensor-curve" d="" stroke="#0a71c3" stroke-width="3" fill="none" stroke-linecap="round"/><circle id="sensor-plot-point" cx="33" cy="118" r="6" fill="#18945d" stroke="white" stroke-width="2"/><text x="21" y="20" class="plot-label">1</text><text x="326" y="136" class="plot-label">100</text><text x="23" y="136" class="plot-label">0</text></svg></div>
+          </div>
+          <div class="experiment-controls"><span class="control-kicker" data-lab="controlPanel">PAINEL DE CONTROLE</span>
+            <label class="lab-control-label" for="sensor-concentration"><span data-lab="concentration">Concentração relativa do alvo</span><output id="sensor-concentration-output" for="sensor-concentration">50</output></label><input type="range" id="sensor-concentration" min="0" max="100" step="5" value="50"/><div class="range-labels"><span>0</span><span>100</span></div>
+            <label class="lab-control-label" for="sensor-specificity" data-lab="recognition">Elemento de reconhecimento</label><select id="sensor-specificity"><option value="matching" data-lab="matching">Compatível com o alvo</option><option value="nonmatching" data-lab="nonmatching">Não compatível</option></select>
+            <div class="sensor-readout"><span data-lab="responseSignal">Sinal relativo (unidades arbitrárias)</span><strong id="sensor-readout" aria-live="polite">0,60</strong></div><div class="observation-box"><small data-lab="observation">O QUE VOCÊ OBSERVA</small><p id="sensor-observation" aria-live="polite"></p></div><button class="lab-reset" type="button" data-reset="sensor" data-lab="reset">Reiniciar experimento</button>
+          </div>
+        </div>
+        <div class="investigation-strip"><div><small data-lab="challenge">DESAFIO PARA INVESTIGAR</small><p data-lab="sensorChallenge">O que acontece quando aumentamos a concentração, mas o receptor não reconhece o alvo? Compare os dois casos.</p></div><details><summary data-lab="understand">Entenda o fenômeno</summary><p data-lab="sensorExplanation">A curva didática usa uma função saturante simples, inspirada em modelos de ocupação de sítios. A resposta de sensores reais depende de afinidade, interferentes, ruído, arquitetura e calibração. O gráfico não representa limite de detecção nem desempenho de diagnóstico.</p></details></div>
+      </section>
+
+      <section class="lab-classroom container" aria-labelledby="classroom-title"><div><p class="section-kicker" data-lab="teacherKicker">PARA ALUNOS E PROFESSORES</p><h2 id="classroom-title" data-lab-html="teacherTitle">Leve a investigação <em>para a sala de aula.</em></h2><p data-lab="teacherDescription">Comece com uma previsão, varie um parâmetro por vez, registre observações e discuta onde o modelo simplificado deixa de representar um dispositivo real. Os controles também funcionam com teclado e em celulares.</p></div><div class="lab-classroom-steps"><span data-lab="teacherStep1">Formule uma hipótese</span><span data-lab="teacherStep2">Teste os controles</span><span data-lab="teacherStep3">Compare e explique</span></div></section>
+      <section class="lab-end container"><p data-lab="scienceDisclaimer">Estas simulações são recursos didáticos qualitativos desenvolvidos para divulgação científica. Valores, curvas, limiares, seletividade e trajetórias são ilustrativos, não medições do INEO nem previsões validadas para dispositivos reais.</p><a href="index.html#publicacoes" class="text-link" data-lab="readResearch">Explorar publicações dos pesquisadores</a></section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><strong>INEO<span class="footer-dot">.</span></strong><p data-i18n="footerFullName">Instituto Nacional de Eletrônica Orgânica e Sustentável</p></div><div class="footer-links"><strong data-i18n="footerNavigate">Navegue</strong><a href="index.html" data-i18n="navHome">Início</a><a href="index.html#pesquisa" data-i18n="navResearch">Pesquisa</a><a href="index.html#publicacoes" data-i18n="navPublications">Publicações</a></div><div class="footer-links"><strong data-i18n="footerExplore">Descubra</strong><a href="laboratorio.html" aria-current="page" data-i18n="navVirtualLab">Laboratório Virtual</a><a href="historia.html" data-i18n="navHistory">História</a><a href="galeria.html" data-i18n="navGallery">Galeria</a><a href="encontro.html" data-i18n="navAnnual">Encontro INEO Anual</a></div><div class="footer-links"><strong data-i18n="footerContact">Contato e canais</strong><a href="mailto:ineo.social@gmail.com">ineo.social@gmail.com</a><a href="https://www.youtube.com/channel/UCWodZrO5kmt6QFDrZiXugHg" target="_blank" rel="noopener noreferrer">YouTube INEO</a></div></div><div class="container footer-bottom"><span>© <span id="current-year"></span> INEO.</span><span data-i18n="footerPrototype">Protótipo de desenvolvimento. Informações institucionais em revisão.</span><a href="#top" data-i18n="backTop">Voltar ao topo</a></div></footer>
+  </body>
+</html>

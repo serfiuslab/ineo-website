@@ -4,7 +4,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 
 const root = path.resolve(import.meta.dirname, '..');
-const htmlFiles = ['index.html', 'historia.html', 'galeria.html', 'encontro.html'];
+const htmlFiles = ['index.html', 'historia.html', 'galeria.html', 'encontro.html', 'laboratorio.html'];
 const htmlSources = Object.fromEntries(htmlFiles.map(file => [file, fs.readFileSync(path.join(root, file), 'utf8')]));
 const html = htmlSources['index.html'];
 const js = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
@@ -12,6 +12,8 @@ const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
 const subpageCss = fs.readFileSync(path.join(root, 'subpages.css'), 'utf8');
 const historyJs = fs.readFileSync(path.join(root, 'history.js'), 'utf8');
 const galleryJs = fs.readFileSync(path.join(root, 'gallery.js'), 'utf8');
+const laboratoryJs = fs.readFileSync(path.join(root, 'laboratorio.js'), 'utf8');
+const laboratoryCss = fs.readFileSync(path.join(root, 'laboratorio.css'), 'utf8');
 const publications = JSON.parse(fs.readFileSync(path.join(root, 'content/publications.json'), 'utf8'));
 const researchers = JSON.parse(fs.readFileSync(path.join(root, 'content/researchers.json'), 'utf8'));
 const openalex = JSON.parse(fs.readFileSync(path.join(root, 'content/openalex.json'), 'utf8'));
@@ -29,6 +31,7 @@ for (const [filename, source] of Object.entries(htmlSources)) {
 }
 assert.ok(css.includes('@media (prefers-reduced-motion: reduce)'), 'Reduced-motion styles missing');
 assert.ok(subpageCss.includes('@media (prefers-reduced-motion: reduce)'), 'Reduced-motion styles missing for editorial pages');
+assert.ok(laboratoryCss.includes('@media (prefers-reduced-motion: reduce)'), 'Reduced-motion styles missing in Virtual Laboratory');
 assert.ok(fs.existsSync(path.join(root, 'assets/ineo-logo.png')), 'Official logo is missing');
 assert.ok(Array.isArray(publications.publications), 'Invalid publications file');
 assert.equal(researchers.schemaVersion, 1, 'Unknown researcher registry version');
@@ -54,6 +57,17 @@ const pt = Object.keys(dictionary.pt).sort();
 const en = Object.keys(dictionary.en).sort();
 assert.deepEqual(pt, en, 'PT and EN translations must contain the same keys');
 for (const key of allKeys) assert.ok(pt.includes(key), `Missing translation for ${key}`);
+
+const labMatch = laboratoryJs.match(/const labTranslations = ([\s\S]+?);\s+const labDefaults =/);
+assert.ok(labMatch, 'Cannot locate Virtual Laboratory translations');
+const labDictionary = vm.runInNewContext(`(${labMatch[1]})`);
+const labPt = Object.keys(labDictionary.pt).sort();
+const labEn = Object.keys(labDictionary.en).sort();
+assert.deepEqual(labPt, labEn, 'Virtual Laboratory PT/EN translation keys differ');
+const labKeys = new Set([...htmlSources['laboratorio.html'].matchAll(/data-lab(?:-html|-aria)?="([^"]+)"/g)].map(item => item[1]));
+for (const key of labKeys) assert.ok(labPt.includes(key), `Missing Virtual Laboratory translation for ${key}`);
+assert.ok(html.includes('href="laboratorio.html"'), 'Virtual Laboratory should be reachable from the homepage');
+assert.ok(htmlSources['laboratorio.html'].includes('id="sensor-plot-point"'), 'Sensor response visualization missing');
 
 const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(item => item[1]));
 
