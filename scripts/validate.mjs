@@ -84,12 +84,15 @@ assert.equal((historyJs.match(/^  '.*\(\d{4}\).*',?$/gm) ?? []).length, 11, 'Exp
 const galleryMatch = galleryJs.match(/const galleryPhotos = ([\s\S]+?);/);
 assert.ok(galleryMatch, 'Cannot locate gallery data');
 const galleryPhotos = vm.runInNewContext(`(${galleryMatch[1]})`);
-assert.equal(galleryPhotos.length, 8, 'Expected three INEO 2026 photographs and five historical photographs');
+assert.equal(galleryPhotos.length, 14, 'Expected three INEO 2026 photographs, seven from 2023 and four other historical photographs');
 assert.ok(galleryPhotos.every(src => src.startsWith('assets/gallery/') && fs.existsSync(path.join(root, src))), 'Gallery photos must be bundled locally');
 assert.ok(galleryPhotos.every(src => fs.statSync(path.join(root, src)).size > 10000), 'Gallery photo files must not be empty');
 assert.equal(galleryPhotos.filter(src => src.startsWith('assets/gallery/encontro-ineo-2026-') && src.endsWith('.webp')).length, 3, 'Three INEO 2026 images must be included');
+assert.equal(galleryPhotos.filter(src => src.startsWith('assets/gallery/workshop-ineo-2023-') && src.endsWith('.webp')).length, 6, 'Six restored Workshop INEO 2023 photos must be included');
 assert.ok(htmlSources['galeria.html'].includes('id="gallery-recent-grid"'), 'The recent meeting gallery must be present');
+assert.ok(htmlSources['galeria.html'].includes('id="gallery-workshop-grid"'), 'The 2023 workshop gallery must be present');
 assert.ok(galleryJs.includes("'Encontro INEO 2026'") && galleryJs.includes("'INEO Meeting 2026'"), 'Both gallery languages need meeting captions');
+assert.ok(galleryJs.includes("'Boas-vindas ao Workshop INEO 2023'") && galleryJs.includes("'Welcome to INEO Workshop 2023'"), 'Workshop captions must be bilingual');
 assert.ok(historyJs.includes("'assets/gallery/research-network-group.jpg'"), 'History photograph must be bundled locally');
 
 for (const item of publications.publications) {
@@ -98,4 +101,4 @@ for (const item of publications.publications) {
   assert.ok(Number.isInteger(item.year), 'Every publication needs an integer year');
 }
 
-console.log(`INEO validation passed: ${htmlFiles.length} pages, ${pt.length} bilingual strings, ${ids.size} homepage IDs, ${galleryPhotos.length} gallery photographs (3 recent + 5 historical), ${researchers.researchers.length} researcher ORCIDs, ${publications.publications.length} curated records.`);
+console.log(`INEO validation passed: ${htmlFiles.length} pages, ${pt.length} bilingual strings, ${ids.size} homepage IDs, ${galleryPhotos.length} gallery photographs (3 recent + 7 from 2023 + 4 historical), ${researchers.researchers.length} researcher ORCIDs, ${publications.publications.length} curated records.`);
