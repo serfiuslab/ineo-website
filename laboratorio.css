@@ -51,6 +51,7 @@ body.lab-paused *, body.lab-paused *::before, body.lab-paused *::after { animati
 .oled-photons.is-on { animation: oled-shimmer 2.6s ease-in-out infinite; }
 .oled-carriers { opacity: .15; transition: opacity .2s; }
 .oled-carriers.is-on { opacity: 1; }
+#oled-active-layer { transition: fill .25s, opacity .25s; }
 .oled-carriers.is-on .carrier-electron { animation: carrier-drop 2.8s ease-in-out infinite; }
 .oled-carriers.is-on .carrier-hole { animation: carrier-rise 2.8s ease-in-out infinite; }
 @keyframes oled-shimmer { 50% { transform: scale(1.08); } }
@@ -67,6 +68,19 @@ body.lab-paused *, body.lab-paused *::before, body.lab-paused *::after { animati
 .experiment-indicator strong { display: block; font-size: 17px; color: var(--navy); }
 .level-track { height: 9px; width: min(42%, 200px); background: #e2edf3; border-radius: 20px; overflow: hidden; flex-shrink: 0; }
 .level-track > span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--blue), #42c28a); border-radius: inherit; transition: width .23s; }
+.oled-plot { margin-top: 14px; padding: 13px 17px 7px; background: #fff; border: 1px solid #dfedf5; border-radius: 14px; }
+.oled-plot-header { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; align-items: center; }
+.oled-plot-header strong { font-size: 11px; color: #658297; letter-spacing: .07em; }
+.oled-plot-legend { display: flex; align-items: center; gap: 13px; font-size: 11px; color: #5e7381; font-weight: 700; }
+.oled-plot-legend span::before { display: inline-block; content: ''; width: 7px; height: 7px; margin-right: 5px; border-radius: 50%; vertical-align: 1px; }
+.oled-legend-blue::before { background: #1688e8; }
+.oled-legend-green::before { background: #159e6b; }
+.oled-legend-red::before { background: #e95d65; }
+.oled-plot svg { display: block; width: 100%; max-height: 160px; }
+.oled-science-readout { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 7px; margin: -7px 0 23px; }
+.oled-science-readout > div { padding: 13px 9px; border-radius: 10px; background: #f3f9fc; border: 1px solid #e0edf5; min-width: 0; }
+.oled-science-readout small { display: block; font-size: 11px; line-height: 1.4; color: #647e8f; min-height: 30px; }
+.oled-science-readout strong { display: block; font: 800 16px 'Manrope',sans-serif; color: var(--navy); margin-top: 5px; white-space: nowrap; }
 .experiment-controls { padding: 29px 29px 25px; display: flex; flex-direction: column; background: white; }
 .control-kicker { margin-bottom: 27px; color: #718c9f; }
 .lab-control-label { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 0 0 15px; font-size: 15px; font-weight: 800; color: #31516b; }
@@ -144,6 +158,8 @@ body[data-page='lab'] .footer-grid { grid-template-columns: 1.7fr 1fr 1fr 1fr; g
   .experiment-controls { padding: 24px 19px; }
   .experiment-indicator { padding: 15px; }
   .experiment-indicator strong { font-size: 15px; }
+  .oled-science-readout small { font-size: 10px; }
+  .oled-science-readout strong { font-size: 13px; }
   .investigation-strip { grid-template-columns: 1fr; gap: 18px; padding: 22px; }
   .investigation-strip details { border-left: 0; border-top: 1px solid var(--line); padding: 18px 0 0; }
   .lab-classroom { grid-template-columns: 1fr; padding: 30px 23px; }
