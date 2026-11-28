@@ -71,6 +71,9 @@
 .source-link { display: inline-block; color: var(--blue); text-decoration: underline; font-weight: 800; font-size: 14px; margin-top: 18px; }
 
 .gallery-hero { padding-bottom: 48px; }
+.gallery-group + .gallery-group { margin-top: 80px; }
+.gallery-group-heading { margin-bottom: 26px; }
+.gallery-group-heading h2 { margin: 10px 0 0; font-size: clamp(25px, 3vw, 36px); letter-spacing: -.04em; }
 .gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .photo-tile { background: #f7fbfd; padding: 0; border: 1px solid #e1ebf1; border-radius: 19px; cursor: pointer; overflow: hidden; text-align: left; color: var(--ink); display: flex; flex-direction: column; box-shadow: 0 12px 35px rgb(24 75 115 / 4%); }
 .photo-tile:focus-visible { outline-offset: 5px; }
